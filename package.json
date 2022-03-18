@@ -1,0 +1,42 @@
+{
+  "name": "blockchain-project",
+  "version": "0.1.0",
+  "description": "This is a simple blockchain project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest -c jest.config.json",
+    "search-circular-dependencies": "npx madge -c ./index.js ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusufshakeel/blockchain-project.git"
+  },
+  "keywords": [
+    "blockchain",
+    "javascript",
+    "node",
+    "nodejs"
+  ],
+  "author": "Yusuf Shakeel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yusufshakeel/blockchain-project/issues"
+  },
+  "homepage": "https://github.com/yusufshakeel/blockchain-project#readme",
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.5.1",
+    "madge": "^5.0.1",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.0"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "fastify": "^3.27.4",
+    "lodash": "^4.17.21",
+    "uuid": "^8.3.2"
+  }
+}
