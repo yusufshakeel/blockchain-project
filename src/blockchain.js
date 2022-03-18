@@ -1,6 +1,6 @@
 'use strict';
 
-const { proofOfWork, isValidBlock, clearMemPool } = require('./helpers');
+const { proofOfWork, isValidBlockchain, clearMemPool } = require('./helpers');
 
 module.exports = function Blockchain({ services }) {
   // this is the blockchain
@@ -49,23 +49,7 @@ module.exports = function Blockchain({ services }) {
     return { block };
   };
 
-  // this.isValidChain = function () {
-  //   let previousBlock = chain[0];
-  //   let currentBlockIndex = 1;
-  //   while (currentBlockIndex < chain.length) {
-  //     const currentBlock = chain[currentBlockIndex];
-  //
-  //     if (previousBlock.hash !== currentBlock.previousHash) {
-  //       return false;
-  //     }
-  //
-  //     if (!isValidBlock(currentBlock)) {
-  //       return false;
-  //     }
-  //
-  //     previousBlock = currentBlock;
-  //     currentBlockIndex++;
-  //   }
-  //   return true;
-  // };
+  this.isValidChain = function () {
+    return isValidBlockchain({ chain, services });
+  };
 };

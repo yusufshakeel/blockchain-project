@@ -142,4 +142,20 @@ describe('Testing blockchain', () => {
       expect(blockchain.getMempool()).toHaveLength(0);
     });
   });
+
+  describe('Testing isValidChain', () => {
+    test('Should return true', () => {
+      const blockchain = new Blockchain({ services });
+      blockchain.createTransaction({
+        sender: 'sender1',
+        receiver: 'receiver1',
+        transactionValue: 1,
+        feeValue: 0,
+        message: 'string',
+        timestamp: '2022-01-01T01:01:01.000Z'
+      });
+      blockchain.createBlock();
+      expect(blockchain.isValidChain()).toBeTruthy();
+    });
+  });
 });
