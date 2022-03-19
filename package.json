@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest -c jest.config.json",
-    "search-circular-dependencies": "npx madge -c ./index.js ./src"
+    "search-circular-dependencies": "npx madge -c ./index.js ./src",
+    "lint": "npx eslint -c .eslintrc.json src test",
+    "lint:fix": "npx eslint --fix -c .eslintrc.json src test",
+    "precommit": "npm run lint && npm run search-circular-dependencies && npm run test"
   },
   "repository": {
     "type": "git",
