@@ -2,7 +2,7 @@
 
 const { proofOfWork, isValidBlockchain, clearMemPool } = require('./helpers');
 
-module.exports = function Blockchain({ services }) {
+module.exports = function Blockchain({ minerAddress, services }) {
   // this is the blockchain
   let chain = [];
 
@@ -16,7 +16,7 @@ module.exports = function Blockchain({ services }) {
 
     // when no block exists in the blockchain
     return {
-      index: 0,
+      index: -1,
       hash: '0'
     };
   };
@@ -43,7 +43,7 @@ module.exports = function Blockchain({ services }) {
   };
 
   this.createBlock = function () {
-    const block = proofOfWork({ getPreviousBlock, memPool: [...memPool], services });
+    const block = proofOfWork({ getPreviousBlock, memPool: [...memPool], minerAddress, services });
     chain.push(block);
     memPool = [...clearMemPool({ memPool, block })];
     return { block };

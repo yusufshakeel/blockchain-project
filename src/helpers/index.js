@@ -7,7 +7,10 @@ const {
   MIN_TRANSACTIONS_PER_BLOCK,
   MAX_SIZE_OF_ALL_TRANSACTIONS_PER_BLOCK_IN_BYTES,
   MIN_NONCE,
-  MAX_NONCE
+  MAX_NONCE,
+  COIN_HALVING_BLOCK_THRESHOLD,
+  STARTING_COINS_FOR_MINING_PER_BLOCK,
+  ROOT_COIN_SOURCE
 } = require('../constants');
 
 function isValidHash(hash) {
@@ -38,20 +41,67 @@ function getTransactions({ memPool }) {
   return { transactions, isTransactionsFound };
 }
 
-function proofOfWork({ getPreviousBlock, memPool, services }) {
+function getRewardTransaction({ blockIndex, minerAddress, services }) {
+  const { timeService, uuidService } = services;
+  const divider = Math.pow(2, Math.floor(blockIndex / COIN_HALVING_BLOCK_THRESHOLD));
+  let rewardCoins = STARTING_COINS_FOR_MINING_PER_BLOCK / divider;
+  if (rewardCoins < 1) {
+    rewardCoins = 0;
+  }
+  return {
+    uuid: uuidService.uuidV4(),
+    sender: ROOT_COIN_SOURCE,
+    receiver: minerAddress,
+    transactionValue: 0,
+    feeValue: 0,
+    rewardValue: rewardCoins,
+    message: 'Reward coin',
+    timestamp: timeService.now()
+  };
+}
+
+function getFeeTransactions({ transactions, minerAddress, services }) {
+  const { timeService, uuidService } = services;
+  return transactions
+    .filter(t => t.feeValue !== 0)
+    .map(t => {
+      return {
+        uuid: uuidService.uuidV4(),
+        sender: t.sender,
+        receiver: minerAddress,
+        transactionValue: 0,
+        feeValue: t.feeValue,
+        rewardValue: 0,
+        message: 'Fee coin',
+        timestamp: timeService.now()
+      };
+    });
+}
+
+function proofOfWork({ getPreviousBlock, memPool, minerAddress, services }) {
   const { timeService, hashService } = services;
   const previousBlock = getPreviousBlock();
   let hash = '0';
   let isHashFound = false;
   while (!isHashFound) {
     const { transactions } = getTransactions({ memPool });
+    const rewardTransaction = getRewardTransaction({
+      blockIndex: previousBlock.index + 1,
+      minerAddress,
+      services
+    });
+    const feeTransactions = getFeeTransactions({
+      transactions,
+      minerAddress,
+      services
+    });
     for (let nonce = MIN_NONCE; nonce <= MAX_NONCE; nonce++) {
       const block = {
         index: previousBlock.index + 1,
         nonce,
         timestamp: timeService.now(),
         previousHash: previousBlock.hash,
-        transactions
+        transactions: [...transactions, rewardTransaction, ...feeTransactions]
       };
       hash = hashService.getSHA256Hash(JSON.stringify(block));
       if (isValidHash(hash)) {
@@ -101,5 +151,7 @@ module.exports = {
   getTransactions,
   isValidBlock,
   clearMemPool,
-  isValidBlockchain
+  isValidBlockchain,
+  getRewardTransaction,
+  getFeeTransactions
 };

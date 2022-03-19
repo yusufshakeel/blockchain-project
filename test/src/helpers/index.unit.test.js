@@ -7,7 +7,9 @@ const {
   proofOfWork,
   isValidBlock,
   clearMemPool,
-  isValidBlockchain
+  isValidBlockchain,
+  getRewardTransaction,
+  getFeeTransactions
 } = require('../../../src/helpers');
 const { MAX_TRANSACTIONS_PER_BLOCK } = require('../../../src/constants');
 const Services = require('../../../src/services');
@@ -158,9 +160,59 @@ describe('Testing helper functions', () => {
     });
   });
 
+  describe('Testing getRewardTransaction', () => {
+    describe('Testing halving', () => {
+      test('Should be able to halve', () => {
+        const block1 = getRewardTransaction({ blockIndex: 1, minerAddress: 'address1', services });
+        const block1024 = getRewardTransaction({
+          blockIndex: 1024,
+          minerAddress: 'address1',
+          services
+        });
+        const block65536 = getRewardTransaction({
+          blockIndex: 65536,
+          minerAddress: 'address1',
+          services
+        });
+        expect(block1.rewardValue).toBe(128);
+        expect(block1024.rewardValue).toBe(64);
+        expect(block65536.rewardValue).toBe(0);
+      });
+    });
+  });
+
+  describe('Testing getFeeTransactions', () => {
+    test('Should get the fee transactions', () => {
+      const transactions = [
+        {
+          uuid: '0363a485-69cd-496a-af27-7dd8c17155e3',
+          sender: 'sender1',
+          receiver: 'receiver1',
+          transactionValue: 1,
+          feeValue: 0.01,
+          message: 'string',
+          timestamp: '2022-01-01T01:01:01.000Z'
+        }
+      ];
+      const result = getFeeTransactions({ transactions, minerAddress: 'address1', services });
+      expect(result).toStrictEqual([
+        {
+          uuid: expect.any(String),
+          sender: 'sender1',
+          receiver: 'address1',
+          transactionValue: 0,
+          feeValue: 0.01,
+          rewardValue: 0,
+          message: 'Fee coin',
+          timestamp: expect.any(String)
+        }
+      ]);
+    });
+  });
+
   describe('Testing proofOfWork', () => {
     test('Should return proof of work', () => {
-      const getPreviousBlock = () => ({ index: 0, hash: '0' });
+      const getPreviousBlock = () => ({ index: -1, hash: '0' });
       const memPool = [
         {
           uuid: '0363a485-69cd-496a-af27-7dd8c17155e3',
@@ -172,24 +224,34 @@ describe('Testing helper functions', () => {
           timestamp: '2022-01-01T01:01:01.000Z'
         }
       ];
-      const result = proofOfWork({ getPreviousBlock, memPool, services });
+      const result = proofOfWork({ getPreviousBlock, memPool, minerAddress: 'address1', services });
       expect(result).toStrictEqual({
-        index: 1,
+        hash: expect.any(String),
+        index: 0,
         nonce: expect.any(Number),
-        timestamp: expect.any(String),
         previousHash: '0',
+        timestamp: expect.any(String),
         transactions: [
           {
-            uuid: '0363a485-69cd-496a-af27-7dd8c17155e3',
-            sender: 'sender1',
-            receiver: 'receiver1',
-            transactionValue: 1,
             feeValue: 0,
             message: 'string',
-            timestamp: '2022-01-01T01:01:01.000Z'
+            receiver: 'receiver1',
+            sender: 'sender1',
+            timestamp: '2022-01-01T01:01:01.000Z',
+            transactionValue: 1,
+            uuid: '0363a485-69cd-496a-af27-7dd8c17155e3'
+          },
+          {
+            feeValue: 0,
+            message: 'Reward coin',
+            rewardValue: 128,
+            sender: 'ROOT_COIN_SOURCE',
+            receiver: 'address1',
+            timestamp: expect.any(String),
+            transactionValue: 0,
+            uuid: expect.any(String)
           }
-        ],
-        hash: expect.any(String)
+        ]
       });
       expect(result.hash).toMatch(/^0000[0-9a-f]+$/i);
     });

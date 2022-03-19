@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+  ROOT_COIN_SOURCE: 'ROOT_COIN_SOURCE',
   MIN_NONCE: 1,
   MAX_NONCE: 4294967296,
   NUMBER_OF_LEADING_ZEROS: 4,
