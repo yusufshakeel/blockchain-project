@@ -47,7 +47,7 @@ Hash = SHA256 of data
 
 where, data is the following
 
-data = index + previousHash + timestamp + transactions + nonce
+data = index + nonce + timestamp + previousHash + transactions
 
 All the values used above are stringified.
 ```
@@ -65,6 +65,7 @@ The transaction will look like the following.
   "receiver": "string",
   "transactionValue": "number",
   "feeValue": "number",
+  "rewardValue": "number",
   "message": "string",
   "timestamp": "string-utc-timestamp"
 }

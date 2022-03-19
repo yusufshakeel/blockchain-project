@@ -43,7 +43,7 @@ module.exports = function Blockchain({ services }) {
   };
 
   this.createBlock = function () {
-    const block = proofOfWork({ getPreviousBlock, memPool, services });
+    const block = proofOfWork({ getPreviousBlock, memPool: [...memPool], services });
     chain.push(block);
     memPool = [...clearMemPool({ memPool, block })];
     return { block };
