@@ -25,7 +25,7 @@ module.exports = function Blockchain({ services }) {
     return chain;
   };
 
-  this.getMempool = function () {
+  this.getMemPool = function () {
     return memPool;
   };
 
@@ -45,7 +45,7 @@ module.exports = function Blockchain({ services }) {
   this.createBlock = function () {
     const block = proofOfWork({ getPreviousBlock, memPool, services });
     chain.push(block);
-    memPool = [...clearMemPool({ block, memPool })];
+    memPool = [...clearMemPool({ memPool, block })];
     return { block };
   };
 

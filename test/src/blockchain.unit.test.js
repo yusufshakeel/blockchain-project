@@ -8,7 +8,7 @@ describe('Testing blockchain', () => {
   describe('Testing createTransaction', () => {
     test('Should be able to create transaction', () => {
       const blockchain = new Blockchain({ services });
-      expect(blockchain.getMempool()).toHaveLength(0);
+      expect(blockchain.getMemPool()).toHaveLength(0);
       expect(blockchain.getChain()).toHaveLength(0);
       blockchain.createTransaction({
         sender: 'sender1',
@@ -19,7 +19,7 @@ describe('Testing blockchain', () => {
         timestamp: '2022-01-01T01:01:01.000Z'
       });
 
-      expect(blockchain.getMempool()).toStrictEqual([
+      expect(blockchain.getMemPool()).toStrictEqual([
         {
           uuid: expect.any(String),
           feeValue: 0,
@@ -45,7 +45,7 @@ describe('Testing blockchain', () => {
         message: 'string',
         timestamp: '2022-01-01T01:01:01.000Z'
       });
-      expect(blockchain.getMempool()).toHaveLength(1);
+      expect(blockchain.getMemPool()).toHaveLength(1);
 
       const result = blockchain.createBlock();
       expect(result).toStrictEqual({
@@ -68,7 +68,7 @@ describe('Testing blockchain', () => {
           ]
         }
       });
-      expect(blockchain.getMempool()).toHaveLength(0);
+      expect(blockchain.getMemPool()).toHaveLength(0);
     });
   });
 
@@ -84,7 +84,7 @@ describe('Testing blockchain', () => {
         timestamp: '2022-01-01T01:01:01.000Z'
       });
 
-      expect(blockchain.getMempool()).toHaveLength(1);
+      expect(blockchain.getMemPool()).toHaveLength(1);
       const result1 = blockchain.createBlock();
       expect(result1).toStrictEqual({
         block: {
@@ -106,7 +106,7 @@ describe('Testing blockchain', () => {
           ]
         }
       });
-      expect(blockchain.getMempool()).toHaveLength(0);
+      expect(blockchain.getMemPool()).toHaveLength(0);
 
       blockchain.createTransaction({
         sender: 'sender1',
@@ -117,7 +117,7 @@ describe('Testing blockchain', () => {
         timestamp: '2022-01-01T01:01:01.100Z'
       });
 
-      expect(blockchain.getMempool()).toHaveLength(1);
+      expect(blockchain.getMemPool()).toHaveLength(1);
       const result2 = blockchain.createBlock();
       expect(result2).toStrictEqual({
         block: {
@@ -139,7 +139,7 @@ describe('Testing blockchain', () => {
           ]
         }
       });
-      expect(blockchain.getMempool()).toHaveLength(0);
+      expect(blockchain.getMemPool()).toHaveLength(0);
     });
   });
 
