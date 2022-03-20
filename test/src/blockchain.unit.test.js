@@ -15,8 +15,7 @@ describe('Testing blockchain', () => {
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
-        message: 'string',
-        timestamp: '2022-01-01T01:01:01.000Z'
+        message: 'string'
       });
 
       expect(blockchain.getMemPool()).toStrictEqual([
@@ -26,7 +25,7 @@ describe('Testing blockchain', () => {
           message: 'string',
           receiver: 'receiver1',
           sender: 'sender1',
-          timestamp: '2022-01-01T01:01:01.000Z',
+          timestamp: expect.any(String),
           transactionValue: 1
         }
       ]);
@@ -42,8 +41,7 @@ describe('Testing blockchain', () => {
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
-        message: 'string',
-        timestamp: '2022-01-01T01:01:01.000Z'
+        message: 'string'
       });
       expect(blockchain.getMemPool()).toHaveLength(1);
 
@@ -61,7 +59,7 @@ describe('Testing blockchain', () => {
               message: 'string',
               receiver: 'receiver1',
               sender: 'sender1',
-              timestamp: '2022-01-01T01:01:01.000Z',
+              timestamp: expect.any(String),
               transactionValue: 1,
               uuid: expect.any(String)
             },
@@ -90,8 +88,7 @@ describe('Testing blockchain', () => {
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
-        message: 'string',
-        timestamp: '2022-01-01T01:01:01.000Z'
+        message: 'string'
       });
 
       expect(blockchain.getMemPool()).toHaveLength(1);
@@ -133,8 +130,7 @@ describe('Testing blockchain', () => {
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
-        message: 'string',
-        timestamp: '2022-01-01T01:01:01.100Z'
+        message: 'string'
       });
 
       expect(blockchain.getMemPool()).toHaveLength(1);
@@ -181,8 +177,7 @@ describe('Testing blockchain', () => {
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
-        message: 'string',
-        timestamp: '2022-01-01T01:01:01.000Z'
+        message: 'string'
       });
       blockchain.createBlock();
       expect(blockchain.isValidChain()).toBeTruthy();

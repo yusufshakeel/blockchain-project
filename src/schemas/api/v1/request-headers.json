@@ -1,0 +1,12 @@
+{
+  "$id": "requestHeaders",
+  "type": "object",
+  "required": [
+    "Content-Type"
+  ],
+  "properties": {
+    "Content-Type": {
+      "type": "string"
+    }
+  }
+}

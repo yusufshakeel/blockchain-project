@@ -1,0 +1,46 @@
+{
+  "$id": "createTransactionRequest",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "transactions"
+      ],
+      "properties": {
+        "transactions": {
+          "type": "object",
+          "required": [
+            "sender",
+            "receiver",
+            "transactionValue"
+          ],
+          "properties": {
+            "sender": {
+              "type": "string"
+            },
+            "receiver": {
+              "type": "string"
+            },
+            "transactionValue": {
+              "type": "number",
+              "multipleOf": 0.00000001
+            },
+            "feeValue": {
+              "type": "number",
+              "default": 0,
+              "multipleOf": 0.00000001
+            },
+            "message": {
+              "type": "string",
+              "maxLength": 250
+            }
+          }
+        }
+      }
+    }
+  }
+}
