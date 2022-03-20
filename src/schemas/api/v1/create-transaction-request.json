@@ -8,10 +8,10 @@
     "data": {
       "type": "object",
       "required": [
-        "transactions"
+        "transaction"
       ],
       "properties": {
-        "transactions": {
+        "transaction": {
           "type": "object",
           "required": [
             "sender",
@@ -20,23 +20,22 @@
           ],
           "properties": {
             "sender": {
-              "type": "string"
+              "$ref": "../../domain/v1/sender.json#"
             },
             "receiver": {
-              "type": "string"
+              "$ref": "../../domain/v1/receiver.json#"
             },
             "transactionValue": {
-              "type": "number",
-              "multipleOf": 0.00000001
+              "$ref": "../../domain/v1/coin.json#",
+              "description": "This is the COIN that the sender wants to send to the receiver."
             },
             "feeValue": {
-              "type": "number",
+              "$ref": "../../domain/v1/coin.json#",
               "default": 0,
-              "multipleOf": 0.00000001
+              "description": "This is the COIN that the sender wants to send as a fee to the miner."
             },
             "message": {
-              "type": "string",
-              "maxLength": 250
+              "$ref": "../../domain/v1/message.json#"
             }
           }
         }

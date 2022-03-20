@@ -21,6 +21,10 @@ module.exports = function Blockchain({ minerAddress, services }) {
     };
   };
 
+  this.getBlock = function (id) {
+    return chain[id];
+  };
+
   this.getChain = function () {
     return chain;
   };

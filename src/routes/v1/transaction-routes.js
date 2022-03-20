@@ -19,9 +19,27 @@ module.exports = function TransactionRoutes(fastify, options) {
     },
     handler: async function (request, reply) {
       const result = controllers.transactionController.createTransaction({
-        data: request.body.data
+        transaction: request.body.data.transaction
       });
       reply.code(HTTP_STATUS_CODES.CREATED).send(result);
+    }
+  });
+
+  fastify.route({
+    method: 'GET',
+    url: '/blockchain/v1/transactions/mempool',
+    schema: {
+      tags: ['Transactions'],
+      description:
+        'This will return the Mempool of the blockchain which consists of all the the transactions that have not been added to a block.',
+      headers: schemaRepository.v1.blockchain.requestHeader,
+      response: {
+        200: schemaRepository.v1.blockchain.mempoolTransactions.response
+      }
+    },
+    handler: async function (request, reply) {
+      const result = controllers.transactionController.memPool();
+      reply.code(HTTP_STATUS_CODES.OK).send(result);
     }
   });
 };
