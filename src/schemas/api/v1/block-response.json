@@ -1,0 +1,21 @@
+{
+  "$id": "blockResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "block"
+      ],
+      "properties": {
+        "block": {
+          "$ref": "../../domain/v1/block-domain.json#"
+        }
+      }
+    }
+  }
+}

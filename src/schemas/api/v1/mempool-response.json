@@ -1,0 +1,24 @@
+{
+  "$id": "mempoolResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "transactions"
+      ],
+      "properties": {
+        "transactions": {
+          "type": "array",
+          "items": {
+            "$ref": "../../domain/v1/transaction.json#"
+          }
+        }
+      }
+    }
+  }
+}

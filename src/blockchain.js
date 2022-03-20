@@ -21,6 +21,10 @@ module.exports = function Blockchain({ minerAddress, services }) {
     };
   };
 
+  this.getBlock = function (id) {
+    return chain[id];
+  };
+
   this.getChain = function () {
     return chain;
   };
@@ -29,19 +33,28 @@ module.exports = function Blockchain({ minerAddress, services }) {
     return memPool;
   };
 
+  /**
+   * @param {object} transaction This is the transaction object.
+   * @return {string} Returns UUID of the created transaction.
+   */
   this.createTransaction = function (transaction) {
-    const { sender, receiver, transactionValue, feeValue, message, timestamp } = transaction;
+    const { sender, receiver, transactionValue, feeValue, message } = transaction;
+    const uuid = services.uuidService.uuidV4();
     memPool.push({
-      uuid: services.uuidService.uuidV4(),
+      uuid,
       sender,
       receiver,
       transactionValue,
       feeValue,
       message,
-      timestamp
+      timestamp: services.timeService.now()
     });
+    return uuid;
   };
 
+  /**
+   * @return {{block: {previousHash: string, index: number, transactions: [], nonce: number, hash: string, timestamp: string}}}
+   */
   this.createBlock = function () {
     const block = proofOfWork({ getPreviousBlock, memPool: [...memPool], minerAddress, services });
     chain.push(block);
@@ -49,6 +62,9 @@ module.exports = function Blockchain({ minerAddress, services }) {
     return { block };
   };
 
+  /**
+   * @return {boolean}
+   */
   this.isValidChain = function () {
     return isValidBlockchain({ chain, services });
   };

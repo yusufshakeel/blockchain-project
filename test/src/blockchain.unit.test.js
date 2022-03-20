@@ -10,15 +10,14 @@ describe('Testing blockchain', () => {
       const blockchain = new Blockchain({ minerAddress: 'minerAddress1', services });
       expect(blockchain.getMemPool()).toHaveLength(0);
       expect(blockchain.getChain()).toHaveLength(0);
-      blockchain.createTransaction({
+      const uuid = blockchain.createTransaction({
         sender: 'sender1',
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
-        message: 'string',
-        timestamp: '2022-01-01T01:01:01.000Z'
+        message: 'string'
       });
-
+      expect(uuid).toMatch(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);
       expect(blockchain.getMemPool()).toStrictEqual([
         {
           uuid: expect.any(String),
@@ -26,7 +25,7 @@ describe('Testing blockchain', () => {
           message: 'string',
           receiver: 'receiver1',
           sender: 'sender1',
-          timestamp: '2022-01-01T01:01:01.000Z',
+          timestamp: expect.any(String),
           transactionValue: 1
         }
       ]);
@@ -42,8 +41,7 @@ describe('Testing blockchain', () => {
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
-        message: 'string',
-        timestamp: '2022-01-01T01:01:01.000Z'
+        message: 'string'
       });
       expect(blockchain.getMemPool()).toHaveLength(1);
 
@@ -61,7 +59,7 @@ describe('Testing blockchain', () => {
               message: 'string',
               receiver: 'receiver1',
               sender: 'sender1',
-              timestamp: '2022-01-01T01:01:01.000Z',
+              timestamp: expect.any(String),
               transactionValue: 1,
               uuid: expect.any(String)
             },
@@ -90,8 +88,7 @@ describe('Testing blockchain', () => {
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
-        message: 'string',
-        timestamp: '2022-01-01T01:01:01.000Z'
+        message: 'string'
       });
 
       expect(blockchain.getMemPool()).toHaveLength(1);
@@ -133,8 +130,7 @@ describe('Testing blockchain', () => {
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
-        message: 'string',
-        timestamp: '2022-01-01T01:01:01.100Z'
+        message: 'string'
       });
 
       expect(blockchain.getMemPool()).toHaveLength(1);
@@ -181,11 +177,34 @@ describe('Testing blockchain', () => {
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
-        message: 'string',
-        timestamp: '2022-01-01T01:01:01.000Z'
+        message: 'string'
       });
       blockchain.createBlock();
       expect(blockchain.isValidChain()).toBeTruthy();
+    });
+  });
+
+  describe('Testing getBlock', () => {
+    describe('When block does not exists', () => {
+      test('Should return undefined', () => {
+        const blockchain = new Blockchain({ minerAddress: 'minerAddress1', services });
+        expect(blockchain.getBlock(1)).toBeUndefined();
+      });
+    });
+
+    describe('When block exists', () => {
+      test('Should return the block', () => {
+        const blockchain = new Blockchain({ minerAddress: 'minerAddress1', services });
+        blockchain.createTransaction({
+          sender: 'sender1',
+          receiver: 'receiver1',
+          transactionValue: 1,
+          feeValue: 0,
+          message: 'string'
+        });
+        const { block } = blockchain.createBlock();
+        expect(blockchain.getBlock(0)).toStrictEqual(block);
+      });
     });
   });
 });

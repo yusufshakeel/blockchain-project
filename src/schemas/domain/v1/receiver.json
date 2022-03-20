@@ -1,0 +1,5 @@
+{
+  "$id": "receiver",
+  "type": "string",
+  "description": "This is the address of the receiver."
+}

@@ -1,0 +1,15 @@
+{
+  "$id": "genericIdResponse",
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "$ref": "../../domain/v1/uuid.json#"
+        }
+      }
+    }
+  }
+}
