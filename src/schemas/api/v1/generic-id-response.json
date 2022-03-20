@@ -6,9 +6,8 @@
     "data": {
       "type": "object",
       "properties": {
-        "id": {
-          "type": "string",
-          "format": "uuid"
+        "uuid": {
+          "$ref": "../../domain/v1/uuid.json#"
         }
       }
     }

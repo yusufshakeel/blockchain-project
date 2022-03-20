@@ -8,7 +8,7 @@ module.exports = function TransactionController({ blockchain }) {
 
   const createTransaction = function createTransaction({ transaction }) {
     const uuid = blockchain.createTransaction(transaction);
-    return { data: { id: uuid } };
+    return { data: { uuid } };
   };
 
   return {
