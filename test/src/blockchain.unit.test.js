@@ -183,4 +183,28 @@ describe('Testing blockchain', () => {
       expect(blockchain.isValidChain()).toBeTruthy();
     });
   });
+
+  describe('Testing getBlock', () => {
+    describe('When block does not exists', () => {
+      test('Should return undefined', () => {
+        const blockchain = new Blockchain({ minerAddress: 'minerAddress1', services });
+        expect(blockchain.getBlock(1)).toBeUndefined();
+      });
+    });
+
+    describe('When block exists', () => {
+      test('Should return the block', () => {
+        const blockchain = new Blockchain({ minerAddress: 'minerAddress1', services });
+        blockchain.createTransaction({
+          sender: 'sender1',
+          receiver: 'receiver1',
+          transactionValue: 1,
+          feeValue: 0,
+          message: 'string'
+        });
+        const { block } = blockchain.createBlock();
+        expect(blockchain.getBlock(0)).toStrictEqual(block);
+      });
+    });
+  });
 });
