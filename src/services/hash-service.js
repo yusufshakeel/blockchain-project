@@ -1,10 +1,10 @@
 'use strict';
 
-const SHA256 = require('crypto-js/sha256');
+const crypto = require('crypto');
 
 module.exports = function HashService() {
   const getSHA256Hash = function (data) {
-    return SHA256(data).toString();
+    return crypto.createHash('sha256').update(data).digest('hex');
   };
 
   return { getSHA256Hash };
