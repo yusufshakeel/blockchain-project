@@ -10,14 +10,14 @@ describe('Testing blockchain', () => {
       const blockchain = new Blockchain({ minerAddress: 'minerAddress1', services });
       expect(blockchain.getMemPool()).toHaveLength(0);
       expect(blockchain.getChain()).toHaveLength(0);
-      blockchain.createTransaction({
+      const uuid = blockchain.createTransaction({
         sender: 'sender1',
         receiver: 'receiver1',
         transactionValue: 1,
         feeValue: 0,
         message: 'string'
       });
-
+      expect(uuid).toMatch(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/);
       expect(blockchain.getMemPool()).toStrictEqual([
         {
           uuid: expect.any(String),
