@@ -9,11 +9,23 @@ This is a simple blockchain project.
 
 ## Getting started
 
+#### Install packages
+
 Run the following command to install the packages.
 
 ```shell
 npm i
 ```
+
+#### Bootstrap
+
+This will create folder like `output`.
+
+```shell
+npm run bootstrap
+```
+
+#### Tests
 
 To run the tests run the following in the terminal.
 
