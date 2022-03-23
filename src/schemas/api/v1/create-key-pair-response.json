@@ -1,0 +1,27 @@
+{
+  "$id": "createKeyPairResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "publicKey",
+        "privateKey"
+      ],
+      "properties": {
+        "publicKey": {
+          "type": "string",
+          "description": "This will be used to create address."
+        },
+        "privateKey": {
+          "type": "string",
+          "description": "This is the private key and should not be shared."
+        }
+      }
+    }
+  }
+}

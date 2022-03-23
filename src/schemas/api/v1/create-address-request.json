@@ -1,0 +1,22 @@
+{
+  "$id": "createAddressRequest",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "publicKey"
+      ],
+      "properties": {
+        "publicKey": {
+          "type": "string",
+          "description": "This will be used to create address."
+        }
+      }
+    }
+  }
+}
