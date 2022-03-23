@@ -15,9 +15,15 @@ function createWallet(walletFor) {
 }
 
 function run() {
-  createWallet('alice');
-  createWallet('bob');
-  createWallet('miner');
+  createWallet('user-alice');
+  createWallet('user-bob');
+  createWallet('user-eve');
+  createWallet('user-tony');
+  createWallet('user-peter');
+  createWallet('miner-john');
+  createWallet('miner-jane');
+  createWallet('miner-jimmy');
+  createWallet('miner-root');
 }
 
 run();
