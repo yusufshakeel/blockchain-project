@@ -19,7 +19,7 @@ npm i
 
 #### Bootstrap
 
-This will create folder like `output`.
+This will create folder like `output` and wallets.
 
 ```shell
 npm run bootstrap

@@ -3,7 +3,7 @@
 const crypto = require('crypto');
 
 module.exports = function Wallet() {
-  this.getKeyPair = function () {
+  this.createKeyPair = function () {
     return crypto.generateKeyPairSync('rsa', {
       modulusLength: 2048,
       publicKeyEncoding: { type: 'spki', format: 'pem' },
@@ -11,7 +11,7 @@ module.exports = function Wallet() {
     });
   };
 
-  this.getAddress = function ({ publicKey }) {
+  this.createAddress = function ({ publicKey }) {
     return crypto.createHmac('sha256', publicKey).digest('hex');
   };
 };
