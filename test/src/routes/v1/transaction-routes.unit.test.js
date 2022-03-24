@@ -36,7 +36,7 @@ describe('Testing transaction routes', () => {
             transaction: {
               sender: 'string',
               receiver: 'string',
-              transactionValue: 0.00000001,
+              transactionValue: 0.0001,
               feeValue: 0,
               message: 'string'
             }

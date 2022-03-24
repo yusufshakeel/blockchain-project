@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "a8fc76f7-4894-46cd-8616-f1a036c753c0",
+		"name": "blockchain-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Transaction",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"transaction\": {\n            \"sender\": \"string\",\n            \"receiver\": \"string\",\n            \"transactionValue\": 0.0001,\n            \"feeValue\": 0,\n            \"message\": \"string\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DOMAIN_URL}}/v1/transactions",
+					"host": [
+						"{{DOMAIN_URL}}"
+					],
+					"path": [
+						"v1",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Wallet",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DOMAIN_URL}}/v1/wallets",
+					"host": [
+						"{{DOMAIN_URL}}"
+					],
+					"path": [
+						"v1",
+						"wallets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Wallet Address",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"data\": {\n        \"publicKey\": \"-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwVS0fnsIWgbEkM1yjPya\\nwebgWdZepiZhWeNpD4hzmQPC2lDOgYxQCppef+kF5cjEiQx16n+MV/oymgzyBxIX\\nPBNj9JYp6Z6MTUSSzXtNOb0Hk9IvqBN/R3ePL0YYJHWESZGx5xxgUGn4GlMo4bLd\\nhqOVCOPQOawxgutHANktwEpKRqARal9MQMWcHfS8OH8dq9dWvxviIeaToI4mGsyY\\nzBS5vJaBZ6h/9Hnfb1drQnNbIQLU6+pk7IaQlYnLdeGnr5NY1rFhqIKFfPlcKwno\\nccTIKTCBY+0MwkhIV8QcZZbZbSj6m59tlF5X5BqPepZ4lpgWn2GwMhVwz0tifrep\\nuwIDAQAB\\n-----END PUBLIC KEY-----\\n\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{DOMAIN_URL}}/v1/wallets/address",
+					"host": [
+						"{{DOMAIN_URL}}"
+					],
+					"path": [
+						"v1",
+						"wallets",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Mempool",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{DOMAIN_URL}}/v1/transactions/mempool",
+					"host": [
+						"{{DOMAIN_URL}}"
+					],
+					"path": [
+						"v1",
+						"transactions",
+						"mempool"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Block by Id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "{{DOMAIN_URL}}/v1/blocks/0",
+					"host": [
+						"{{DOMAIN_URL}}"
+					],
+					"path": [
+						"v1",
+						"blocks",
+						"0"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

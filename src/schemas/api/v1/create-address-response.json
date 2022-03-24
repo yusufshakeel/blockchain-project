@@ -1,0 +1,22 @@
+{
+  "$id": "createAddressResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "address"
+      ],
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "This is the address."
+        }
+      }
+    }
+  }
+}

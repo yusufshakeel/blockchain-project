@@ -7,9 +7,11 @@
   "collectCoverageFrom": [
     "**/*.{js,jsx}",
     "!**/coverage/**",
+    "!**/output/**",
     "!**/docs/**",
     "!**/node_modules/**",
     "!**/test/**",
+    "!**/src/scripts/**",
     "!index.js"
   ],
   "coverageThreshold": {

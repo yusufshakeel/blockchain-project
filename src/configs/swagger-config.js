@@ -21,7 +21,7 @@ module.exports = {
     schemes: ['http'],
     consumes: ['application/json'],
     produces: ['application/json'],
-    tags: [{ name: 'APIs' }],
+    tags: [{ name: 'Blockchain' }, { name: 'Transactions' }, { name: 'Wallets' }],
     components: {
       securitySchemes: {
         BasicAuth: {
