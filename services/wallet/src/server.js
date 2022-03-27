@@ -11,11 +11,11 @@ const RoutesV1 = require('./routes/v1');
 const Repositories = require('./repositories');
 const Controllers = require('./controllers');
 
-module.exports = function Server({ fastify, blockchain }) {
+module.exports = function Server({ fastify, wallet }) {
   const self = this;
 
   this.setup = async () => {
-    const controllers = new Controllers({ blockchain });
+    const controllers = new Controllers({ wallet });
     const repositories = new Repositories({ parser: new JsonSchemaRefParser() });
 
     const schemaRepository = await repositories.schemaRepository.loadAll();

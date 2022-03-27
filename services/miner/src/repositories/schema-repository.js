@@ -36,18 +36,6 @@ module.exports = function SchemaRepository({ parser }) {
       path.join(SCHEMA_LOCATION_V1, 'block-response.json')
     );
 
-    const createKeyPairResponse = await parser.dereference(
-      path.join(SCHEMA_LOCATION_V1, 'create-key-pair-response.json')
-    );
-
-    const createAddressRequest = await parser.dereference(
-      path.join(SCHEMA_LOCATION_V1, 'create-address-request.json')
-    );
-
-    const createAddressResponse = await parser.dereference(
-      path.join(SCHEMA_LOCATION_V1, 'create-address-response.json')
-    );
-
     const v1Schemas = {
       blockchain: {
         block: {
@@ -64,15 +52,6 @@ module.exports = function SchemaRepository({ parser }) {
         },
         mempoolTransactions: {
           response: mempoolTransactionsResponse
-        },
-        wallet: {
-          createKeyPair: {
-            response: createKeyPairResponse
-          },
-          createAddress: {
-            request: createAddressRequest,
-            response: createAddressResponse
-          }
         }
       }
     };
