@@ -4,8 +4,6 @@
   "description": "This is a simple blockchain project.",
   "main": "index.js",
   "scripts": {
-    "bootstrap": "mkdir -p output && npm run create-wallets",
-    "create-wallets": "node src/scripts/create-wallets.js",
     "start": "nodemon index.js",
     "test": "jest -c jest.config.json",
     "search-circular-dependencies": "npx madge -c ./index.js ./src",
