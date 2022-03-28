@@ -3,15 +3,13 @@
 const mongoose = require('mongoose');
 const fastify = require('fastify')({ logger: true });
 const Server = require('./src/server');
-const Blockchain = require('./src/blockchain');
 const Services = require('./src/services');
 const {
   MONGODB_HOST,
   MONGODB_PORT,
   MONGODB_USERNAME,
   MONGODB_PASSWORD,
-  MONGODB_DB_NAME,
-  BLOCKCHAIN_ROOT_MINER_ADDRESS
+  MONGODB_DB_NAME
 } = require('./src/constants');
 
 async function start() {
@@ -25,10 +23,8 @@ async function start() {
     await mongoose.connect(mongoUrl, mongoOption);
     console.info('Connected to MongoDB database.');
 
-    const minerAddress = process.env.BLOCKCHAIN_ROOT_MINER_ADDRESS ?? BLOCKCHAIN_ROOT_MINER_ADDRESS;
     const services = new Services();
-    const blockchain = new Blockchain({ minerAddress, services });
-    new Server({ fastify, blockchain, services }).setup().then(server => server.run());
+    new Server({ fastify, services }).setup().then(server => server.run());
   } catch (err) {
     console.error('FATAL ERROR');
     console.error(err);

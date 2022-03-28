@@ -2,16 +2,16 @@
 
 const BlockNotFoundError = require('../errors/block-not-found-error');
 
-module.exports = function BlockchainController({ blockchain }) {
-  const getBlockById = function getBlockById({ blockId }) {
-    const block = blockchain.getBlock(blockId);
+module.exports = function BlockchainController({ repositories }) {
+  const fetchBlockByIndex = async function ({ blockIndex }) {
+    const block = await repositories.blockchainRepository.fetchBlockByIndex(blockIndex);
     if (!block) {
-      throw new BlockNotFoundError(blockId);
+      throw new BlockNotFoundError(blockIndex);
     }
     return { data: { block } };
   };
 
   return {
-    getBlockById
+    fetchBlockByIndex
   };
 };
