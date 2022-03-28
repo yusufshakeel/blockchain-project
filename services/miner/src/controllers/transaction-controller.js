@@ -1,9 +1,9 @@
 'use strict';
 
-module.exports = function TransactionController({ blockchain, services, repositories }) {
-  const memPool = function memPool() {
-    const transactions = blockchain.getMemPool();
-    return { data: { transactions } };
+module.exports = function TransactionController({ services, repositories }) {
+  const memPool = async function memPool() {
+    const transactions = await repositories.mempoolRepository.fetchAllPendingTransactions();
+    return { data: { transactions: transactions.map(t => t.transaction) } };
   };
 
   const createTransaction = async function createTransaction({ transaction }) {
