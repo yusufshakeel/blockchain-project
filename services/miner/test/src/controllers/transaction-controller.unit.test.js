@@ -19,7 +19,7 @@ describe('Testing TransactionController', () => {
 
   const repositories = {
     mempoolRepository: {
-      fetchAllPendingTransactions: jest.fn(async () => []),
+      fetchAllPendingTransactions: jest.fn(async () => [{ id: 1, transaction: { a: 1 } }]),
       createTransaction: jest.fn(async () => {})
     }
   };
@@ -29,7 +29,7 @@ describe('Testing TransactionController', () => {
   describe('Testing memPool', () => {
     test('Should be able to return transactions in mempool', async () => {
       const result = await transactionController.memPool();
-      expect(result).toStrictEqual({ data: { transactions: [] } });
+      expect(result).toStrictEqual({ data: { transactions: [{ a: 1 }] } });
     });
   });
 
