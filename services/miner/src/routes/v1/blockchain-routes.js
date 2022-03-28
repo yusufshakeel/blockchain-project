@@ -7,7 +7,7 @@ module.exports = function BlockchainRoutes(fastify, options) {
 
   fastify.route({
     method: 'GET',
-    url: '/blockchain/v1/blocks/:blockId',
+    url: '/blockchain/v1/blocks/:blockIndex',
     schema: {
       tags: ['Blockchain'],
       description: 'This will return all the blocks.',
@@ -18,8 +18,8 @@ module.exports = function BlockchainRoutes(fastify, options) {
       }
     },
     handler: async function (request, reply) {
-      const result = controllers.blockchainController.getBlockById({
-        blockId: request.params.blockId
+      const result = await controllers.blockchainController.fetchBlockByIndex({
+        blockIndex: request.params.blockIndex
       });
       reply.code(HTTP_STATUS_CODES.OK).send(result);
     }

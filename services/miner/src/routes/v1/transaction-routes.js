@@ -18,7 +18,7 @@ module.exports = function TransactionRoutes(fastify, options) {
       }
     },
     handler: async function (request, reply) {
-      const result = controllers.transactionController.createTransaction({
+      const result = await controllers.transactionController.createTransaction({
         transaction: request.body.data.transaction
       });
       reply.code(HTTP_STATUS_CODES.CREATED).send(result);
@@ -38,7 +38,7 @@ module.exports = function TransactionRoutes(fastify, options) {
       }
     },
     handler: async function (request, reply) {
-      const result = controllers.transactionController.memPool();
+      const result = await controllers.transactionController.memPool();
       reply.code(HTTP_STATUS_CODES.OK).send(result);
     }
   });

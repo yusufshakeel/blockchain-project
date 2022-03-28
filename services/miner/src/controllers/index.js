@@ -3,7 +3,7 @@
 const TransactionController = require('./transaction-controller');
 const BlockchainController = require('./blockchain-controller');
 
-module.exports = function Controller({ blockchain }) {
-  this.transactionController = TransactionController({ blockchain });
-  this.blockchainController = BlockchainController({ blockchain });
+module.exports = function Controller({ services, repositories }) {
+  this.transactionController = TransactionController({ services, repositories });
+  this.blockchainController = BlockchainController({ repositories });
 };

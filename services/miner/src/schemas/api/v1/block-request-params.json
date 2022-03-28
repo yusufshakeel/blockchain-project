@@ -2,10 +2,10 @@
   "$id": "blockRequestParams",
   "type": "object",
   "required": [
-    "blockId"
+    "blockIndex"
   ],
   "properties": {
-    "blockId": {
+    "blockIndex": {
       "type": "integer",
       "minimum": 0
     }

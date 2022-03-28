@@ -2,17 +2,15 @@
 
 const fastifyModule = require('fastify');
 const Server = require('../../src/server');
-const Blockchain = require('../../src/blockchain');
 const Services = require('../../src/services');
 
 describe('Server', () => {
   const services = new Services();
-  const blockchain = new Blockchain({ minerAddress: 'address1', services });
 
   describe('Setup', () => {
     test('Should be able to setup server', async () => {
       const fastify = fastifyModule();
-      await expect(new Server({ fastify, blockchain, services }).setup()).resolves.not.toThrow();
+      await expect(new Server({ fastify, services }).setup()).resolves.not.toThrow();
       await fastify.close();
     });
   });
@@ -27,7 +25,7 @@ describe('Server', () => {
           setErrorHandler: jest.fn(),
           listen: jest.fn((port, host, cb) => cb())
         };
-        const server = await new Server({ fastify, blockchain, services }).setup();
+        const server = await new Server({ fastify, services }).setup();
         await server.run();
         expect(fastify.listen).toHaveBeenCalledTimes(1);
       });
@@ -43,7 +41,7 @@ describe('Server', () => {
           listen: jest.fn((port, host, cb) => cb('someError'))
         };
         try {
-          const server = await new Server({ fastify, blockchain, services }).setup();
+          const server = await new Server({ fastify, services }).setup();
           await server.run();
         } catch (e) {
           expect(e).toBe('someError');
