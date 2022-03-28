@@ -36,7 +36,7 @@ describe('ErrorHandlerMiddleware', () => {
           code: 'BLOCKCHAIN_DOMAIN_BLOCK_NOT_FOUND_ERROR',
           error: 'BLOCKCHAIN_DOMAIN_BLOCK_NOT_FOUND_ERROR',
           errorData: {
-            blockId: 1
+            blockIndex: 1
           },
           message: 'Block not found'
         }

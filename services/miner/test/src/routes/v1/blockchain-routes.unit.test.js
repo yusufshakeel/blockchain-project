@@ -9,7 +9,7 @@ describe('Testing blockchain routes', () => {
   beforeAll(async () => {
     const controllers = {
       blockchainController: {
-        getBlockById: jest.fn(() => ({
+        fetchBlockByIndex: jest.fn(() => ({
           data: {
             block: {
               index: 0,
