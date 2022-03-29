@@ -24,7 +24,7 @@ describe('Testing BlockchainRepository', () => {
     const blockchainRepository = new BlockchainRepository({ BlockchainModel });
     await blockchainRepository.fetchBlockByIndex(1);
     expect(BlockchainModel.findOne).toHaveBeenCalledTimes(1);
-    expect(BlockchainModel.findOne).toHaveBeenCalledWith({ blockIndex: 1 });
+    expect(BlockchainModel.findOne).toHaveBeenCalledWith({ index: 1 });
   });
 
   test('Should be able to fetch all blocks', async () => {

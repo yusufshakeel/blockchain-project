@@ -15,7 +15,8 @@ const {
   MONGODB_USERNAME,
   MONGODB_PASSWORD,
   MONGODB_HOST,
-  MONGODB_PORT
+  MONGODB_PORT,
+  BLOCK_MINING_CRON_TIME
 } = require('./constants');
 
 const services = new Services();
@@ -68,7 +69,6 @@ async function bootstrap() {
         : '';
     const mongoUrl = `mongodb://${mongoAuth}${MONGODB_HOST}:${MONGODB_PORT}`;
     await mongoose.connect(mongoUrl, mongoOption);
-    console.info('Connected to MongoDB database.');
     return true;
   } catch (err) {
     console.error('FATAL ERROR');
@@ -80,7 +80,7 @@ async function bootstrap() {
 async function run() {
   const isReady = await bootstrap();
   if (isReady) {
-    const job = new CronJob('*/30 * * * * *', () => mine());
+    const job = new CronJob(BLOCK_MINING_CRON_TIME, () => mine());
     job.start();
   }
 }
