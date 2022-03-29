@@ -10,6 +10,7 @@ module.exports = function TransactionController({ services, repositories }) {
     const { sender, receiver, transactionValue, feeValue, message } = transaction;
     const uuid = services.uuidService.uuidV4();
     await repositories.mempoolRepository.createTransaction({
+      uuid,
       transaction: {
         uuid,
         sender,

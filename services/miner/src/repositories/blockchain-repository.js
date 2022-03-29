@@ -5,6 +5,10 @@ module.exports = function BlockchainRepository({ BlockchainModel }) {
     return BlockchainModel.findOne({ blockIndex });
   };
 
+  this.fetchAllBlocks = async function () {
+    return BlockchainModel.find().sort({ blockIndex: 1 });
+  };
+
   this.createBlock = async function (block) {
     const blockchainModel = BlockchainModel(block);
     return await blockchainModel.save();

@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const transactionSchema = require('./schemas/transaction-schema');
 
 const BlockchainSchema = new mongoose.Schema({
-  blockIndex: {
+  index: {
     type: Number,
     required: true,
     index: true,
