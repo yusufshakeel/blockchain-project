@@ -26,6 +26,9 @@ const MempoolSchema = new mongoose.Schema({
   },
   updatedAt: {
     type: Date
+  },
+  minedAt: {
+    type: Date
   }
 });
 

@@ -16,6 +16,7 @@ module.exports = function MempoolRepository({ MempoolModel }) {
       {
         $set: {
           updatedAt: Date.now(),
+          minedAt: Date.now(),
           status: 'MINED'
         }
       }
