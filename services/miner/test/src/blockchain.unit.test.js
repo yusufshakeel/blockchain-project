@@ -69,6 +69,7 @@ describe('Testing blockchain', () => {
               rewardValue: 128,
               sender: 'ROOT_COIN_SOURCE',
               receiver: 'minerAddress1',
+              transactionType: 'REWARD_COIN_TRANSACTION',
               timestamp: expect.any(String),
               transactionValue: 0,
               uuid: expect.any(String)
@@ -116,6 +117,7 @@ describe('Testing blockchain', () => {
               receiver: 'minerAddress1',
               rewardValue: 128,
               sender: 'ROOT_COIN_SOURCE',
+              transactionType: 'REWARD_COIN_TRANSACTION',
               timestamp: expect.any(String),
               transactionValue: 0,
               uuid: expect.any(String)
@@ -158,6 +160,7 @@ describe('Testing blockchain', () => {
               receiver: 'minerAddress1',
               rewardValue: 128,
               sender: 'ROOT_COIN_SOURCE',
+              transactionType: 'REWARD_COIN_TRANSACTION',
               timestamp: expect.any(String),
               transactionValue: 0,
               uuid: expect.any(String)

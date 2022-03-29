@@ -10,7 +10,9 @@ const {
   MAX_NONCE,
   COIN_HALVING_BLOCK_THRESHOLD,
   STARTING_COINS_FOR_MINING_PER_BLOCK,
-  ROOT_COIN_SOURCE
+  ROOT_COIN_SOURCE,
+  TRANSACTION_TYPE_REWARD_COIN,
+  TRANSACTION_TYPE_FEE_COIN
 } = require('../constants');
 
 function isValidHash(hash) {
@@ -56,6 +58,7 @@ function getRewardTransaction({ blockIndex, minerAddress, services }) {
     feeValue: 0,
     rewardValue: rewardCoins,
     message: 'Reward coin',
+    transactionType: TRANSACTION_TYPE_REWARD_COIN,
     timestamp: timeService.now()
   };
 }
@@ -73,6 +76,7 @@ function getFeeTransactions({ transactions, minerAddress, services }) {
         feeValue: t.feeValue,
         rewardValue: 0,
         message: 'Fee coin',
+        transactionType: TRANSACTION_TYPE_FEE_COIN,
         timestamp: timeService.now()
       };
     });

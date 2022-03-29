@@ -204,6 +204,7 @@ describe('Testing helper functions', () => {
           feeValue: 0.01,
           rewardValue: 0,
           message: 'Fee coin',
+          transactionType: 'FEE_COIN_TRANSACTION',
           timestamp: expect.any(String)
         }
       ]);
@@ -249,6 +250,7 @@ describe('Testing helper functions', () => {
             receiver: 'address1',
             timestamp: expect.any(String),
             transactionValue: 0,
+            transactionType: 'REWARD_COIN_TRANSACTION',
             uuid: expect.any(String)
           }
         ]
