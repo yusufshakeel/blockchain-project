@@ -55,6 +55,8 @@ async function mine() {
   });
   await blockchainRepository.createBlock(block);
   console.log('Block created!', block.index);
+  const minedTransactionUUIDs = block.transactions.map(t => t.uuid);
+  await mempoolRepository.updateMinedTransactions(minedTransactionUUIDs);
 }
 
 async function bootstrap() {

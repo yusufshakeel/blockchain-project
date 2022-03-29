@@ -23,6 +23,9 @@ const MempoolSchema = new mongoose.Schema({
     type: Date,
     ['default']: Date.now,
     required: true
+  },
+  updatedAt: {
+    type: Date
   }
 });
 
