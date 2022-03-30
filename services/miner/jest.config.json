@@ -11,7 +11,7 @@
     "!**/docs/**",
     "!**/node_modules/**",
     "!**/test/**",
-    "!**/src/scripts/**",
+    "!**/src/block-miner.js",
     "!index.js"
   ],
   "coverageThreshold": {

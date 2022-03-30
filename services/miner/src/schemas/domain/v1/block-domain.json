@@ -21,10 +21,10 @@
       "$ref": "./timestamp.json#"
     },
     "previousHash": {
-      "type": "integer"
+      "type": "string"
     },
     "hash":{
-      "type": "integer"
+      "type": "string"
     },
     "transactions": {
       "type": "array",

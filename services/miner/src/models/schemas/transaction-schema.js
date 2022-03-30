@@ -36,6 +36,10 @@ const transactionSchema = new mongoose.Schema({
     maxlength: 160,
     minlength: 1
   },
+  transactionType: {
+    type: String,
+    required: true
+  },
   timestamp: {
     type: Date,
     ['default']: Date.now,

@@ -5,6 +5,12 @@ const mongoose = require('mongoose');
 const transactionSchema = require('./schemas/transaction-schema');
 
 const MempoolSchema = new mongoose.Schema({
+  uuid: {
+    type: String,
+    required: true,
+    index: true,
+    unique: true
+  },
   transaction: {
     type: transactionSchema,
     required: true
@@ -17,6 +23,12 @@ const MempoolSchema = new mongoose.Schema({
     type: Date,
     ['default']: Date.now,
     required: true
+  },
+  updatedAt: {
+    type: Date
+  },
+  minedAt: {
+    type: Date
   }
 });
 

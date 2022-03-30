@@ -38,6 +38,9 @@
     "message": {
       "$ref": "./message.json#"
     },
+    "transactionType": {
+      "$ref": "./transaction-type.json#"
+    },
     "timestamp": {
       "$ref": "./timestamp.json#"
     }

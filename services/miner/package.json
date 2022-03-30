@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "start:miner": "node src/block-miner.js",
     "test": "jest -c jest.config.json",
     "search-circular-dependencies": "npx madge -c ./index.js ./src",
     "lint": "npx eslint -c .eslintrc.json src test",
@@ -42,6 +43,7 @@
   },
   "dependencies": {
     "arecibo": "^2.0.0",
+    "cron": "^1.8.2",
     "fastify": "^3.27.4",
     "fastify-swagger": "^5.0.0",
     "http-status-codes": "^2.2.0",

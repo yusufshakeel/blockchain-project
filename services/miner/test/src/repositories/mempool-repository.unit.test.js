@@ -26,4 +26,12 @@ describe('Testing MempoolRepository', () => {
     expect(MempoolModel.find).toHaveBeenCalledTimes(1);
     expect(MempoolModel.find).toHaveBeenCalledWith({ status: 'PENDING' });
   });
+
+  test('Should be able to update mined transaction', async () => {
+    const updateMany = jest.fn();
+    const MempoolModel = { updateMany };
+    const mempoolRepository = new MempoolRepository({ MempoolModel });
+    await mempoolRepository.updateMinedTransactions(['a', 'b']);
+    expect(updateMany).toHaveBeenCalledTimes(1);
+  });
 });
