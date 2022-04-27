@@ -16,7 +16,8 @@ const {
   MONGODB_PASSWORD,
   MONGODB_HOST,
   MONGODB_PORT,
-  BLOCK_MINING_CRON_TIME
+  BLOCK_MINING_CRON_TIME,
+  TRANSACTION_TYPE_COIN
 } = require('./constants');
 
 const services = new Services();
@@ -77,9 +78,36 @@ async function bootstrap() {
   }
 }
 
+async function genesisTransaction() {
+  console.log('ENTERED BLOCK_MINER - genesisTransaction');
+  const chain = await blockchainRepository.fetchAllBlocks();
+  if (!chain.length) {
+    console.log('BLOCK_MINER - genesisTransaction - creating new transaction');
+    const uuid = services.uuidService.uuidV4();
+    await mempoolRepository.createTransaction({
+      uuid,
+      transaction: {
+        uuid,
+        sender: minerAddress,
+        receiver: minerAddress,
+        transactionValue: 0,
+        feeValue: 0,
+        message: 'GENESIS TRANSACTION',
+        transactionType: TRANSACTION_TYPE_COIN,
+        timestamp: services.timeService.now()
+      },
+      status: 'PENDING'
+    });
+  } else {
+    console.log('BLOCK_MINER - genesisTransaction - genesis block is already created!');
+  }
+  console.log('EXITING BLOCK_MINER - genesisTransaction');
+}
+
 async function run() {
   const isReady = await bootstrap();
   if (isReady) {
+    await genesisTransaction();
     const job = new CronJob(BLOCK_MINING_CRON_TIME, () => mine());
     job.start();
   }
