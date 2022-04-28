@@ -11,11 +11,13 @@ const transactionSchema = new mongoose.Schema({
   },
   sender: {
     type: String,
-    required: true
+    required: true,
+    index: true
   },
   receiver: {
     type: String,
-    required: true
+    required: true,
+    index: true
   },
   transactionValue: {
     type: Number,
@@ -38,7 +40,8 @@ const transactionSchema = new mongoose.Schema({
   },
   transactionType: {
     type: String,
-    required: true
+    required: true,
+    index: true
   },
   timestamp: {
     type: Date,
