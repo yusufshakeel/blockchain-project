@@ -8,20 +8,31 @@ const {
 const { getAddressBalance } = require('../helpers');
 const TransactionValidator = require('../validators/transaction-validation')();
 const InvalidTransactionRequestError = require('../errors/invalid-transaction-request-error');
+const InvalidTransactionSignatureError = require('../errors/invalid-transaction-signature-error');
 
 module.exports = function TransactionController({ services, repositories }) {
-  const createTransaction = async function createTransaction({ transaction }) {
+  const createTransaction = async function createTransaction({ transaction, validation }) {
+    const { signature, publicKey: base64EncodedPublicKey } = validation;
     const { sender, receiver, transactionValue, feeValue, message } = transaction;
+
+    const isValidSignature = TransactionValidator.isTransactionSignatureValid(
+      signature,
+      base64EncodedPublicKey,
+      transaction
+    );
+    if (!isValidSignature) {
+      throw new InvalidTransactionSignatureError();
+    }
 
     const coinToTransfer = Number((transactionValue + feeValue).toFixed(NUMBER_OF_DECIMAL_PLACES));
     const blockchain = await repositories.blockchainRepository.fetchAllBlocks();
     const { coinBalance } = getAddressBalance({ address: sender, blockchain });
-    const isValid = TransactionValidator.isValidSendingTransactionValue(
+    const isValidTransactionValue = TransactionValidator.isValidSendingTransactionValue(
       transactionValue,
       feeValue,
       coinBalance
     );
-    if (!isValid) {
+    if (!isValidTransactionValue) {
       const coinShortage = Number((coinToTransfer - coinBalance).toFixed(NUMBER_OF_DECIMAL_PLACES));
       throw new InvalidTransactionRequestError({ coinBalance, coinToTransfer, coinShortage });
     }

@@ -7,10 +7,15 @@ const Wallet = require('../wallet');
 const wallet = new Wallet();
 
 function createWallet(walletFor) {
-  const { publicKey, privateKey } = wallet.createKeyPair();
-  const address = wallet.createAddress({ publicKey });
-  fs.writeFileSync(path.resolve(__dirname, `./../../output/${walletFor}.public.pem`), publicKey);
-  fs.writeFileSync(path.resolve(__dirname, `./../../output/${walletFor}.private.pem`), privateKey);
+  const { address, publicKey, privateKey } = wallet.createKeyPair();
+  fs.writeFileSync(
+    path.resolve(__dirname, `./../../output/${walletFor}.public.base64encode.txt`),
+    publicKey
+  );
+  fs.writeFileSync(
+    path.resolve(__dirname, `./../../output/${walletFor}.private.base64encode.txt`),
+    privateKey
+  );
   fs.writeFileSync(path.resolve(__dirname, `./../../output/${walletFor}.address.txt`), address);
 }
 

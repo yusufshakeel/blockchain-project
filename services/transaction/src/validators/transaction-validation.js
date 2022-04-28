@@ -1,5 +1,7 @@
 'use strict';
 
+const crypto = require('crypto');
+
 const { NUMBER_OF_DECIMAL_PLACES } = require('../constants');
 
 module.exports = function TransactionValidator() {
@@ -10,5 +12,19 @@ module.exports = function TransactionValidator() {
     return Number((coinBalance - totalCoinsToSend).toFixed(NUMBER_OF_DECIMAL_PLACES)) >= 0;
   };
 
-  return { isValidSendingTransactionValue };
+  const isTransactionSignatureValid = (signature, base64EncodedPublicKey, transaction) => {
+    const stringifiedTransaction = JSON.stringify(transaction);
+    const publicKey = Buffer.from(base64EncodedPublicKey, 'base64').toString('ascii');
+    return crypto.verify(
+      'sha256',
+      Buffer.from(stringifiedTransaction),
+      {
+        key: publicKey,
+        padding: crypto.constants.RSA_PKCS1_PSS_PADDING
+      },
+      Buffer.from(signature, 'base64')
+    );
+  };
+
+  return { isValidSendingTransactionValue, isTransactionSignatureValid };
 };
