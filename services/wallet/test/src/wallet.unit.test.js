@@ -7,6 +7,7 @@ describe('Testing Wallet', () => {
 
   test('Should be able to create public and private keys', () => {
     const keys = wallet.createKeyPair();
+    expect(keys).toHaveProperty('address');
     expect(keys).toHaveProperty('publicKey');
     expect(keys).toHaveProperty('privateKey');
   });

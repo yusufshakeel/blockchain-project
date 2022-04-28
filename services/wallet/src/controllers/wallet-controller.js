@@ -2,8 +2,8 @@
 
 module.exports = function WalletController({ wallet }) {
   const createKeyPair = function () {
-    const { publicKey, privateKey } = wallet.createKeyPair();
-    return { data: { publicKey, privateKey } };
+    const { address, publicKey, privateKey } = wallet.createKeyPair();
+    return { data: { address, publicKey, privateKey } };
   };
 
   const createAddress = function ({ publicKey }) {

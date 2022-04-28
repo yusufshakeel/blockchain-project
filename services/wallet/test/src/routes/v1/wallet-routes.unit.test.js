@@ -9,7 +9,9 @@ describe('Testing wallet routes', () => {
   beforeAll(async () => {
     const controllers = {
       walletController: {
-        createKeyPair: jest.fn(() => ({ data: { publicKey: 'some key', privateKey: 'some key' } })),
+        createKeyPair: jest.fn(() => ({
+          data: { address: 'some address', publicKey: 'some key', privateKey: 'some key' }
+        })),
         createAddress: jest.fn(() => ({ data: { address: 'some address' } }))
       }
     };

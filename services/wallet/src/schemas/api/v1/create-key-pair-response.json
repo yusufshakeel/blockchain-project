@@ -9,17 +9,22 @@
     "data": {
       "type": "object",
       "required": [
+        "address",
         "publicKey",
         "privateKey"
       ],
       "properties": {
+        "address": {
+          "type": "string",
+          "description": "This is the address and it will be using in transactions."
+        },
         "publicKey": {
           "type": "string",
-          "description": "This will be used to create address."
+          "description": "This is the base64 encoded public key."
         },
         "privateKey": {
           "type": "string",
-          "description": "This is the private key and should not be shared."
+          "description": "This is the base64 encoded private key. Do not share this with any one."
         }
       }
     }
