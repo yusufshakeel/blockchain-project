@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "start:miner": "node src/block-miner.js",
     "test": "jest -c jest.config.json",
     "search-circular-dependencies": "npx madge -c ./index.js ./src",
     "lint": "npx eslint -c .eslintrc.json src test",

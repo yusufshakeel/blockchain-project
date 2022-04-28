@@ -1,5 +1,0 @@
-{
-  "$id": "message",
-  "type": "string",
-  "maxLength": 200
-}

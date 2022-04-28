@@ -17,16 +17,6 @@ describe('Testing BlockchainRepository', () => {
     expect(save).toHaveBeenCalledTimes(1);
   });
 
-  test('Should be able to fetch block by index', async () => {
-    const BlockchainModel = {
-      findOne: jest.fn()
-    };
-    const blockchainRepository = new BlockchainRepository({ BlockchainModel });
-    await blockchainRepository.fetchBlockByIndex(1);
-    expect(BlockchainModel.findOne).toHaveBeenCalledTimes(1);
-    expect(BlockchainModel.findOne).toHaveBeenCalledWith({ index: 1 });
-  });
-
   test('Should be able to fetch all blocks', async () => {
     const BlockchainModel = {
       find: jest.fn()
