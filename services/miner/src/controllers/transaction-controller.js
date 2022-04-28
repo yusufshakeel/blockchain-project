@@ -18,10 +18,9 @@ module.exports = function TransactionController({ services, repositories }) {
     const blockchain = await repositories.blockchainRepository.fetchAllBlocks();
     const { coinBalance } = getAddressBalance({ address: sender, blockchain });
     const isValid = TransactionValidator.isValidSendingTransactionValue(
-      sender,
       transactionValue,
       feeValue,
-      blockchain
+      coinBalance
     );
     if (!isValid) {
       const coinShortage = Number((coinToTransfer - coinBalance).toFixed(NUMBER_OF_DECIMAL_PLACES));
