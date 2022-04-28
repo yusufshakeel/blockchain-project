@@ -36,6 +36,10 @@ describe('Testing transaction routes', () => {
               transactionValue: 0.0001,
               feeValue: 0,
               message: 'string'
+            },
+            validation: {
+              signature: 'some sign',
+              publicKey: 'some base64 encoded public key'
             }
           }
         }

@@ -8,7 +8,8 @@
     "data": {
       "type": "object",
       "required": [
-        "transaction"
+        "transaction",
+        "validation"
       ],
       "properties": {
         "transaction": {
@@ -36,6 +37,23 @@
             },
             "message": {
               "$ref": "../../domain/v1/message.json#"
+            }
+          }
+        },
+        "validation": {
+          "type": "object",
+          "required": [
+            "signature",
+            "publicKey"
+          ],
+          "properties": {
+            "signature": {
+              "type": "string",
+              "description": "This is the signature of the transaction data."
+            },
+            "publicKey": {
+              "type": "string",
+              "description": "This is the base64 encoded value of the public key of the sender."
             }
           }
         }
