@@ -1,0 +1,45 @@
+{
+  "$id": "createTransactionRequest",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "transaction"
+      ],
+      "properties": {
+        "transaction": {
+          "type": "object",
+          "required": [
+            "sender",
+            "receiver",
+            "transactionValue"
+          ],
+          "properties": {
+            "sender": {
+              "$ref": "../../domain/v1/sender.json#"
+            },
+            "receiver": {
+              "$ref": "../../domain/v1/receiver.json#"
+            },
+            "transactionValue": {
+              "$ref": "../../domain/v1/coin.json#",
+              "description": "This is the COIN that the sender wants to send to the receiver."
+            },
+            "feeValue": {
+              "$ref": "../../domain/v1/coin.json#",
+              "default": 0,
+              "description": "This is the COIN that the sender wants to send as a fee to the miner."
+            },
+            "message": {
+              "$ref": "../../domain/v1/message.json#"
+            }
+          }
+        }
+      }
+    }
+  }
+}

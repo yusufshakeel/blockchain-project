@@ -1,0 +1,5 @@
+{
+  "$id": "coin",
+  "type": "number",
+  "multipleOf": 0.0001
+}

@@ -1,0 +1,9 @@
+{
+  "$id": "transactionType",
+  "type": "string",
+  "enum": [
+    "REWARD_COIN_TRANSACTION",
+    "FEE_COIN_TRANSACTION",
+    "TRANSACTION_COIN_TRANSACTION"
+  ]
+}
