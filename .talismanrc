@@ -1,3 +1,7 @@
 fileignoreconfig:
 - filename: package-lock.json
   checksum: 0eada7da582e47d0757fa993977b881ad2e9ae0ae916574fe12326bcdca278d2
+- filename: docs/blockchain-project.postman_environment.json
+  checksum: 9130a4fd49843090ea92fd815fa9727d3e0b27ad603931308097bb1b9a0a7a84
+- filename: docs/blockchain-project.postman_collection.json
+  checksum: 00859c53d9c6738ac4af27de2b69a54b9802d99225cac29b2aae5782f9a1e561

@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Wallet",
+			"name": "WALLET",
 			"item": [
 				{
 					"name": "Create Wallet",
@@ -29,9 +29,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{DOMAIN_URL_WALLE}}/v1/wallets",
+							"raw": "{{DOMAIN_URL_WALLET}}/v1/wallets",
 							"host": [
-								"{{DOMAIN_URL_WALLE}}"
+								"{{DOMAIN_URL_WALLET}}"
 							],
 							"path": [
 								"v1",
@@ -61,9 +61,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{DOMAIN_URL_WALLE}}/v1/wallets",
+									"raw": "{{DOMAIN_URL_WALLET}}/v1/wallets",
 									"host": [
-										"{{DOMAIN_URL_WALLE}}"
+										"{{DOMAIN_URL_WALLET}}"
 									],
 									"path": [
 										"v1",
@@ -122,9 +122,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{DOMAIN_URL_WALLE}}/v1/wallets/address",
+							"raw": "{{DOMAIN_URL_WALLET}}/v1/wallets/address",
 							"host": [
-								"{{DOMAIN_URL_WALLE}}"
+								"{{DOMAIN_URL_WALLET}}"
 							],
 							"path": [
 								"v1",
@@ -155,9 +155,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{DOMAIN_URL_WALLE}}/v1/wallets/address",
+									"raw": "{{DOMAIN_URL_WALLET}}/v1/wallets/address",
 									"host": [
-										"{{DOMAIN_URL_WALLE}}"
+										"{{DOMAIN_URL_WALLET}}"
 									],
 									"path": [
 										"v1",
@@ -199,7 +199,7 @@
 			]
 		},
 		{
-			"name": "Transaction",
+			"name": "TRANSACTION",
 			"item": [
 				{
 					"name": "Create Transaction",
@@ -214,7 +214,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"data\": {\n        \"transaction\": {\n            \"sender\": \"39b402f1a7e0c60578020f54581f3dfc450225406f19bf7b7684b908a0404794\",\n            \"receiver\": \"39b402f1a7e0c60578020f54581f3dfc450225406f19bf7b7684b908a0404794\",\n            \"transactionValue\": 0.9999,\n            \"feeValue\": 0.0001,\n            \"message\": \"string\"\n        }\n    }\n}",
+							"raw": "{\n    \"data\": {\n        \"transaction\": {\n            \"sender\": \"125335e90eafabe3a7441703cd0ed55d4d471c968e88364bfa85462724981202\",\n            \"receiver\": \"23b2e9936baf56016771b1169823302aa5bb474c7a4d1d8ec817c1c428bd8d58\",\n            \"transactionValue\": 1,\n            \"feeValue\": 0,\n            \"message\": \"Coin Purchased from Root Miner\"\n        }\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -222,9 +222,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{DOMAIN_URL}}/v1/transactions",
+							"raw": "{{DOMAIN_URL_TRANSACTION}}/v1/transactions",
 							"host": [
-								"{{DOMAIN_URL}}"
+								"{{DOMAIN_URL_TRANSACTION}}"
 							],
 							"path": [
 								"v1",
@@ -254,9 +254,9 @@
 									}
 								},
 								"url": {
-									"raw": "{{DOMAIN_URL}}/v1/transactions",
+									"raw": "{{DOMAIN_URL_TRANSACTION}}/v1/transactions",
 									"host": [
-										"{{DOMAIN_URL}}"
+										"{{DOMAIN_URL_TRANSACTION}}"
 									],
 									"path": [
 										"v1",
@@ -291,37 +291,11 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"data\": {\n        \"uuid\": \"bb92af9c-6652-4616-ac03-ff01c14476df\"\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Get Mempool",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "default"
-							}
-						],
-						"url": {
-							"raw": "{{DOMAIN_URL}}/v1/transactions/mempool",
-							"host": [
-								"{{DOMAIN_URL}}"
-							],
-							"path": [
-								"v1",
-								"transactions",
-								"mempool"
-							]
-						}
-					},
-					"response": [
+						},
 						{
-							"name": "Get Mempool",
+							"name": "Create Transaction - Error with insufficient coins",
 							"originalRequest": {
-								"method": "GET",
+								"method": "POST",
 								"header": [
 									{
 										"key": "Content-Type",
@@ -329,20 +303,28 @@
 										"type": "default"
 									}
 								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"transaction\": {\n            \"sender\": \"125335e90eafabe3a7441703cd0ed55d4d471c968e88364bfa85462724981202\",\n            \"receiver\": \"23b2e9936baf56016771b1169823302aa5bb474c7a4d1d8ec817c1c428bd8d58\",\n            \"transactionValue\": 1,\n            \"feeValue\": 0,\n            \"message\": \"Coin Purchased from Root Miner\"\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
 								"url": {
-									"raw": "{{DOMAIN_URL}}/v1/transactions/mempool",
+									"raw": "{{DOMAIN_URL_TRANSACTION}}/v1/transactions",
 									"host": [
-										"{{DOMAIN_URL}}"
+										"{{DOMAIN_URL_TRANSACTION}}"
 									],
 									"path": [
 										"v1",
-										"transactions",
-										"mempool"
+										"transactions"
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Bad Request",
+							"code": 400,
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
@@ -351,11 +333,11 @@
 								},
 								{
 									"key": "content-length",
-									"value": "347"
+									"value": "243"
 								},
 								{
 									"key": "Date",
-									"value": "Tue, 29 Mar 2022 03:52:15 GMT"
+									"value": "Thu, 28 Apr 2022 15:32:53 GMT"
 								},
 								{
 									"key": "Connection",
@@ -367,10 +349,15 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"transactions\": [\n            {\n                \"uuid\": \"3186fc6d-ba57-48ee-b5ff-942752a34381\",\n                \"sender\": \"39b402f1a7e0c60578020f54581f3dfc450225406f19bf7b7684b908a0404794\",\n                \"receiver\": \"39b402f1a7e0c60578020f54581f3dfc450225406f19bf7b7684b908a0404794\",\n                \"transactionValue\": 0.9999,\n                \"feeValue\": 0.0001,\n                \"rewardValue\": 0,\n                \"message\": \"string\",\n                \"timestamp\": \"2022-03-29T03:52:13.628Z\"\n            }\n        ]\n    }\n}"
+							"body": "{\n    \"errors\": [\n        {\n            \"code\": \"BLOCKCHAIN_DOMAIN_INVALID_TRANSACTION_REQUEST_ERROR\",\n            \"error\": \"BLOCKCHAIN_DOMAIN_INVALID_TRANSACTION_REQUEST_ERROR\",\n            \"message\": \"Invalid transaction request\",\n            \"errorData\": {\n                \"coinBalance\": 0,\n                \"coinToTransfer\": 1,\n                \"coinShortage\": 1\n            }\n        }\n    ]\n}"
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"name": "EXCHANGE",
+			"item": [
 				{
 					"name": "Get Block by Id",
 					"request": {
@@ -383,14 +370,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{DOMAIN_URL}}/v1/blocks/0",
+							"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/blocks/5",
 							"host": [
-								"{{DOMAIN_URL}}"
+								"{{DOMAIN_URL_EXCHANGE}}"
 							],
 							"path": [
 								"v1",
 								"blocks",
-								"0"
+								"5"
 							]
 						}
 					},
@@ -407,9 +394,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{DOMAIN_URL}}/v1/blocks/0",
+									"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/blocks/0",
 									"host": [
-										"{{DOMAIN_URL}}"
+										"{{DOMAIN_URL_EXCHANGE}}"
 									],
 									"path": [
 										"v1",
@@ -458,9 +445,9 @@
 									}
 								],
 								"url": {
-									"raw": "{{DOMAIN_URL}}/v1/blocks/0",
+									"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/blocks/0",
 									"host": [
-										"{{DOMAIN_URL}}"
+										"{{DOMAIN_URL_EXCHANGE}}"
 									],
 									"path": [
 										"v1",
@@ -496,6 +483,160 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"data\": {\n        \"block\": {\n            \"index\": 0,\n            \"nonce\": 112604,\n            \"timestamp\": \"2022-03-29T03:40:32.590Z\",\n            \"previousHash\": \"0\",\n            \"hash\": \"0000962dd779a573c48a26ca784593c122cb947900f0f5a2039bf344859116c3\",\n            \"transactions\": [\n                {\n                    \"uuid\": \"bb92af9c-6652-4616-ac03-ff01c14476df\",\n                    \"sender\": \"string\",\n                    \"receiver\": \"string\",\n                    \"transactionValue\": 0.9999,\n                    \"feeValue\": 0.0001,\n                    \"rewardValue\": 0,\n                    \"message\": \"string\",\n                    \"timestamp\": \"2022-03-29T03:40:17.781Z\"\n                },\n                {\n                    \"uuid\": \"92932c12-89a5-4ff9-8b96-c5d2b733371a\",\n                    \"sender\": \"ROOT_COIN_SOURCE\",\n                    \"receiver\": \"655335e90eafabe3a7441703cd0ed55d4d471c968e88364bfa85462724981202\",\n                    \"transactionValue\": 0,\n                    \"feeValue\": 0,\n                    \"rewardValue\": 128,\n                    \"message\": \"Reward coin\",\n                    \"timestamp\": \"2022-03-29T03:40:30.013Z\"\n                },\n                {\n                    \"uuid\": \"28113bb6-736e-442c-9495-280ae42ef839\",\n                    \"sender\": \"string\",\n                    \"receiver\": \"655335e90eafabe3a7441703cd0ed55d4d471c968e88364bfa85462724981202\",\n                    \"transactionValue\": 0,\n                    \"feeValue\": 0.0001,\n                    \"rewardValue\": 0,\n                    \"message\": \"Fee coin\",\n                    \"timestamp\": \"2022-03-29T03:40:30.014Z\"\n                }\n            ]\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/blocks/statistics",
+							"host": [
+								"{{DOMAIN_URL_EXCHANGE}}"
+							],
+							"path": [
+								"v1",
+								"blocks",
+								"statistics"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get statistics",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/blocks/statistics",
+									"host": [
+										"{{DOMAIN_URL_EXCHANGE}}"
+									],
+									"path": [
+										"v1",
+										"blocks",
+										"statistics"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "54"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 28 Apr 2022 17:06:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"statistics\": {\n            \"totalNumberOfBlocksMined\": 5\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Mempool",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/transactions/mempool",
+							"host": [
+								"{{DOMAIN_URL_EXCHANGE}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"mempool"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Mempool",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "default"
+									}
+								],
+								"url": {
+									"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/transactions/mempool",
+									"host": [
+										"{{DOMAIN_URL_EXCHANGE}}"
+									],
+									"path": [
+										"v1",
+										"transactions",
+										"mempool"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "347"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 29 Mar 2022 03:52:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"transactions\": [\n            {\n                \"uuid\": \"3186fc6d-ba57-48ee-b5ff-942752a34381\",\n                \"sender\": \"39b402f1a7e0c60578020f54581f3dfc450225406f19bf7b7684b908a0404794\",\n                \"receiver\": \"39b402f1a7e0c60578020f54581f3dfc450225406f19bf7b7684b908a0404794\",\n                \"transactionValue\": 0.9999,\n                \"feeValue\": 0.0001,\n                \"rewardValue\": 0,\n                \"message\": \"string\",\n                \"timestamp\": \"2022-03-29T03:52:13.628Z\"\n            }\n        ]\n    }\n}"
 						}
 					]
 				}
