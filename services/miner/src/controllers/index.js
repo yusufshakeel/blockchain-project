@@ -1,9 +1,7 @@
 'use strict';
 
-const TransactionController = require('./transaction-controller');
-const BlockchainController = require('./blockchain-controller');
+const MinerController = require('./miner-controller');
 
-module.exports = function Controller({ services, repositories }) {
-  this.transactionController = TransactionController({ services, repositories });
-  this.blockchainController = BlockchainController({ repositories });
+module.exports = function Controller({ repositories, services, minerAddress }) {
+  this.minerController = MinerController({ repositories, services, minerAddress });
 };

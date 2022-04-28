@@ -1,0 +1,48 @@
+{
+  "$id": "transaction",
+  "type": "object",
+  "required": [
+    "uuid",
+    "sender",
+    "receiver",
+    "transactionValue",
+    "feeValue"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "uuid": {
+      "$ref": "./uuid.json#"
+    },
+    "sender": {
+      "type": "string",
+      "description": "This is the address of the sender."
+    },
+    "receiver": {
+      "type": "string",
+      "description": "This is the address of the receiver."
+    },
+    "transactionValue": {
+      "$ref": "./coin.json#",
+      "description": "This is the COIN that the sender wants to send to the receiver."
+    },
+    "feeValue": {
+      "$ref": "./coin.json#",
+      "default": 0,
+      "description": "This is the COIN that the sender wants to send as a fee to the miner."
+    },
+    "rewardValue": {
+      "$ref": "./coin.json#",
+      "default": 0,
+      "description": "This is the COIN miner is awarded on mining a block."
+    },
+    "message": {
+      "$ref": "./message.json#"
+    },
+    "transactionType": {
+      "$ref": "./transaction-type.json#"
+    },
+    "timestamp": {
+      "$ref": "./timestamp.json#"
+    }
+  }
+}

@@ -1,5 +1,7 @@
 'use strict';
 
+const { MEMPOOL_TRANSACTION_STATUS_MINED } = require('../constants/index');
+
 module.exports = function MempoolRepository({ MempoolModel }) {
   this.createTransaction = async function (block) {
     const mempoolModel = MempoolModel(block);
@@ -17,7 +19,7 @@ module.exports = function MempoolRepository({ MempoolModel }) {
         $set: {
           updatedAt: Date.now(),
           minedAt: Date.now(),
-          status: 'MINED'
+          status: MEMPOOL_TRANSACTION_STATUS_MINED
         }
       }
     );

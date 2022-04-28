@@ -1,0 +1,26 @@
+{
+  "$id": "blockStatisticsResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "statistics"
+      ],
+      "properties": {
+        "statistics": {
+          "type": "object",
+          "properties": {
+            "totalNumberOfBlocksMined": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}
