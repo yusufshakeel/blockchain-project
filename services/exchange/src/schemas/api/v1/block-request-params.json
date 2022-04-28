@@ -1,0 +1,13 @@
+{
+  "$id": "blockRequestParams",
+  "type": "object",
+  "required": [
+    "blockIndex"
+  ],
+  "properties": {
+    "blockIndex": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

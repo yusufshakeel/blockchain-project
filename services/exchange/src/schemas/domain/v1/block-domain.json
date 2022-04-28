@@ -1,0 +1,36 @@
+{
+  "$id": "blockDomain",
+  "type": "object",
+  "required": [
+    "index",
+    "nonce",
+    "timestamp",
+    "previousHash",
+    "hash",
+    "transactions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "index": {
+      "type": "integer"
+    },
+    "nonce": {
+      "type": "integer"
+    },
+    "timestamp": {
+      "$ref": "./timestamp.json#"
+    },
+    "previousHash": {
+      "type": "string"
+    },
+    "hash":{
+      "type": "string"
+    },
+    "transactions": {
+      "type": "array",
+      "items": {
+        "$ref": "./transaction.json#"
+      }
+    }
+  }
+}
