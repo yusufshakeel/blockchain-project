@@ -41,12 +41,15 @@
     "appId": "com.yusufshakeel.coincoin",
     "mac": {
       "category": "public.app-category.developer-tools",
-      "icon": "resources/app-icons/stable/coincoin.icns"
+      "icon": "resources/app-icons/stable/logo.icns"
     },
     "dmg": {
-      "background": "resources/app-icons/stable/background.tiff",
-      "icon": "resources/app-icons/stable/coincoin.icns"
+      "background": "resources/app-icons/stable/install-background.tiff",
+      "icon": "resources/app-icons/stable/logo.icns"
     }
+  },
+  "engines": {
+    "node": ">14.0.0"
   },
   "devDependencies": {
     "electron": "^13.1.5",

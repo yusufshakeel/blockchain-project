@@ -2,6 +2,7 @@
 
 const { app, BrowserWindow, shell } = require('electron');
 const windowStateKeeper = require('electron-window-state');
+const fileManagement = require('./file-management');
 const applicationMenu = require('./application-menu');
 
 // global variable to prevent it from getting garbage collected.
@@ -14,13 +15,17 @@ function createWindow() {
     defaultHeight: 600
   });
 
+  const maxDimensions = !isDevEnv ? { maxWidth: 400, maxHeight: 600 } : {};
+
   mainWindow = new BrowserWindow({
+    maximizable: !!isDevEnv,
     x: windowState.x,
     y: windowState.y,
     width: windowState.width,
     height: windowState.height,
     minWidth: 400,
     minHeight: 600,
+    ...maxDimensions,
     backgroundColor: '#fff',
     webPreferences: {
       contextIsolation: false,
@@ -34,6 +39,8 @@ function createWindow() {
   windowState.manage(mainWindow);
 
   mainWindow.loadFile(__dirname + '/../static/app.html');
+
+  fileManagement(mainWindow);
 
   mainWindow.on('closed', () => {
     mainWindow = null;
