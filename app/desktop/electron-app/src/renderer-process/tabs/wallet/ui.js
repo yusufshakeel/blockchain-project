@@ -16,7 +16,7 @@ module.exports = () => {
         </div>
       </div>
       <div id="configured-wallet-container">
-        <p class="my-3 text-center">Wallet details</p>
+        <p class="my-3 text-center">Wallet</p>
         <div class="mb-3">
           <label for="wallet-address" class="form-label">Address</label>
           <div class="input-group">
@@ -27,10 +27,12 @@ module.exports = () => {
         <div class="mb-3">
           <label for="wallet-public-key" class="form-label">Public key</label>
           <input type="text" class="form-control" id="wallet-public-key" readonly>
+          <input type="text" class="form-control" id="wallet-public-key-hidden" hidden>
         </div>
         <div class="mb-3">
           <label for="wallet-private-key" class="form-label">Private key</label>
           <input type="text" class="form-control" id="wallet-private-key" readonly>
+          <input type="text" class="form-control" id="wallet-private-key-hidden" hidden>
         </div>
       </div>
     </div>

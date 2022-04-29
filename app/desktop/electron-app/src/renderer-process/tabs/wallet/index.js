@@ -1,7 +1,6 @@
 'use strict';
 
 const fs = require('fs');
-const path = require('path');
 const ui = require('./ui');
 const Wallet = require('../../../helpers/wallet');
 const {
@@ -12,7 +11,7 @@ const {
   IPC_EVENT_OPEN_MESSAGE_BOX
 } = require('../../../main-process/constants/ipc-event-constants');
 
-module.exports = function walletTab({ ipcRenderer }) {
+module.exports = function walletTab({ ipcRenderer, clipboard }) {
   const mainElement = document.getElementById('pills-wallet');
   mainElement.innerHTML = ui();
 
@@ -31,19 +30,30 @@ module.exports = function walletTab({ ipcRenderer }) {
     openFileListener();
   });
 
+  const copyWalletAddress = document.getElementById('btn-copy-wallet-address');
+  copyWalletAddress.addEventListener('click', () => {
+    const address = document.getElementById('wallet-address').value;
+    if (address.length) {
+      clipboard.writeText(address);
+      ipcRenderer.send(IPC_EVENT_OPEN_MESSAGE_BOX, {
+        message: 'Address copied!',
+        messageType: 'info'
+      });
+    }
+  });
+
   // OPEN FILE
   const openFileListener = () => ipcRenderer.send(IPC_EVENT_OPEN_FILE_DIALOG_JSON);
-
   ipcRenderer.on(IPC_EVENT_OPEN_FILE_DIALOG_JSON_FILE_PATH, async (e, args) => {
     try {
       const walletCredentialsJsonString = fs.readFileSync(args.filePath).toString();
       const credentialsJson = JSON.parse(walletCredentialsJsonString);
 
       document.getElementById('wallet-address').value = credentialsJson.address;
-      document.getElementById('wallet-public-key').value =
-        credentialsJson.publicKey.substring(0, 10) + '***** REDACTED *****';
-      document.getElementById('wallet-private-key').value =
-        credentialsJson.privateKey.substring(0, 10) + '***** REDACTED *****';
+      document.getElementById('wallet-public-key').value = '***** REDACTED *****';
+      document.getElementById('wallet-public-key-hidden').value = credentialsJson.publicKey;
+      document.getElementById('wallet-private-key').value = '***** REDACTED *****';
+      document.getElementById('wallet-private-key-hidden').value = credentialsJson.privateKey;
     } catch (e) {
       ipcRenderer.send(IPC_EVENT_OPEN_MESSAGE_BOX, { message: e.message, messageType: 'error' });
     }

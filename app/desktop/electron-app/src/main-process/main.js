@@ -1,21 +1,27 @@
 'use strict';
 
-const { app, BrowserWindow, shell } = require('electron');
+const { app, remote, BrowserWindow, shell, ipcMain } = require('electron');
 const windowStateKeeper = require('electron-window-state');
 const fileManagement = require('./file-management');
 const applicationMenu = require('./application-menu');
+const {
+  IPC_EVENT_GET_USER_PREFERENCES,
+  IPC_EVENT_USER_PREFERENCES
+} = require('./constants/ipc-event-constants');
 
 // global variable to prevent it from getting garbage collected.
 let mainWindow;
 const isDevEnv = process.env.COINCOIN_ENV === 'dev';
 
+const userDataLocation = (app || remote.app).getPath('userData');
+
 function createWindow() {
   const windowState = windowStateKeeper({
     defaultWidth: 400,
-    defaultHeight: 600
+    defaultHeight: 650
   });
 
-  const maxDimensions = !isDevEnv ? { maxWidth: 400, maxHeight: 600 } : {};
+  const maxDimensions = !isDevEnv ? { maxWidth: 400, maxHeight: 650 } : {};
 
   mainWindow = new BrowserWindow({
     maximizable: !!isDevEnv,
@@ -24,7 +30,7 @@ function createWindow() {
     width: windowState.width,
     height: windowState.height,
     minWidth: 400,
-    minHeight: 600,
+    minHeight: 650,
     ...maxDimensions,
     backgroundColor: '#fff',
     webPreferences: {
@@ -49,6 +55,10 @@ function createWindow() {
   mainWindow.webContents.on('will-navigate', function (event, url) {
     event.preventDefault();
     shell.openExternal(url);
+  });
+
+  ipcMain.on(IPC_EVENT_GET_USER_PREFERENCES, event => {
+    event.reply(IPC_EVENT_USER_PREFERENCES, { userDataLocation });
   });
 }
 
