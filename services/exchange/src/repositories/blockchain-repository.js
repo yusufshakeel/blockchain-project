@@ -11,4 +11,8 @@ module.exports = function BlockchainRepository({ BlockchainModel }) {
       totalNumberOfBlocksMined
     };
   };
+
+  this.fetchAllBlocks = async function () {
+    return BlockchainModel.find();
+  };
 };

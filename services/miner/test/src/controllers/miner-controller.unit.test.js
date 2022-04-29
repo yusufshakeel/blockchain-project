@@ -1,16 +1,11 @@
 'use strict';
 
-const fs = require('fs');
-const path = require('path');
 const Controllers = require('../../../src/controllers');
 const Services = require('../../../src/services');
 
 describe('Testing MinerController', () => {
   const services = new Services();
-  const minerAddress = fs.readFileSync(
-    path.resolve(__dirname, './../../../seed/miner-root.address.txt'),
-    'utf8'
-  );
+  const minerAddress = '655335e90eafabe3a7441703cd0ed55d4d471c968e88364bfa85462724981202';
 
   describe('Testing mine', () => {
     describe('When mempool is empty', () => {

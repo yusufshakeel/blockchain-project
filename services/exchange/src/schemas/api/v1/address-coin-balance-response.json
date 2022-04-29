@@ -1,0 +1,29 @@
+{
+  "$id": "addressCoinBalanceResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "totalCoinsSent",
+        "totalCoinsReceived",
+        "coinBalance"
+      ],
+      "properties": {
+        "totalCoinsSent": {
+          "$ref": "../../domain/v1/coin.json#"
+        },
+        "totalCoinsReceived": {
+          "$ref": "../../domain/v1/coin.json#"
+        },
+        "coinBalance": {
+          "$ref": "../../domain/v1/coin.json#"
+        }
+      }
+    }
+  }
+}
