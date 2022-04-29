@@ -9,7 +9,7 @@ describe('ErrorBuilder', () => {
   describe('When error has statusCode and message', () => {
     test('Should return error', () => {
       const error = errorBuilder.build(
-        new InvalidTransactionRequestError({ coinBalance: 0, coinToTransfer: 1, coinShortage: 1 })
+        new InvalidTransactionRequestError({ errorData: { err: 'some err' } })
       );
       expect(error).toStrictEqual({
         code: 400,
@@ -18,11 +18,7 @@ describe('ErrorBuilder', () => {
             {
               code: 'BLOCKCHAIN_DOMAIN_INVALID_TRANSACTION_REQUEST_ERROR',
               error: 'BLOCKCHAIN_DOMAIN_INVALID_TRANSACTION_REQUEST_ERROR',
-              errorData: {
-                coinBalance: 0,
-                coinShortage: 1,
-                coinToTransfer: 1
-              },
+              errorData: { err: 'some err' },
               message: 'Invalid transaction request'
             }
           ]

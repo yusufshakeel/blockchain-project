@@ -7,7 +7,7 @@ const {
 } = require('../constants');
 const { getAddressBalance } = require('../helpers');
 const TransactionValidator = require('../validators/transaction-validation')();
-const InvalidTransactionRequestError = require('../errors/invalid-transaction-request-error');
+const InsufficientTransactionCoinError = require('../errors/insufficient-transaction-coin-error');
 const InvalidTransactionSignatureError = require('../errors/invalid-transaction-signature-error');
 const InvalidTransactionSenderAddressError = require('../errors/invalid-transaction-sender-address-error');
 
@@ -43,7 +43,7 @@ module.exports = function TransactionController({ services, repositories }) {
     );
     if (!isValidTransactionValue) {
       const coinShortage = Number((coinToTransfer - coinBalance).toFixed(NUMBER_OF_DECIMAL_PLACES));
-      throw new InvalidTransactionRequestError({ coinBalance, coinToTransfer, coinShortage });
+      throw new InsufficientTransactionCoinError({ coinBalance, coinToTransfer, coinShortage });
     }
 
     const uuid = services.uuidService.uuidV4();

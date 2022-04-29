@@ -1,7 +1,7 @@
 'use strict';
 
 const TransactionController = require('../../../src/controllers/transaction-controller');
-const InvalidTransactionRequestError = require('../../../src/errors/invalid-transaction-request-error');
+const InsufficientTransactionCoinError = require('../../../src/errors/insufficient-transaction-coin-error');
 const InvalidTransactionSignatureError = require('../../../src/errors/invalid-transaction-signature-error');
 const InvalidTransactionSenderAddressError = require('../../../src/errors/invalid-transaction-sender-address-error');
 const fakeCreds = require('../../test-data/fake-creds.json');
@@ -98,7 +98,7 @@ describe('Testing TransactionController', () => {
           });
           throw new Error('Should have failed!');
         } catch (e) {
-          expect(e).toBeInstanceOf(InvalidTransactionRequestError);
+          expect(e).toBeInstanceOf(InsufficientTransactionCoinError);
           expect(e.errorData).toStrictEqual({
             coinBalance: 2,
             coinShortage: 0.0001,
