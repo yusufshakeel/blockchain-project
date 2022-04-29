@@ -1,7 +1,7 @@
 'use strict';
 
 const { getAddressBalance } = require('../../../src/helpers');
-const blockchain = require('../../test-data/blockchains.json');
+const blockchain = require('../../test-data/fake-blockchains.json');
 
 describe('Testing helper functions', () => {
   describe('Testing getAddressBalance', () => {
