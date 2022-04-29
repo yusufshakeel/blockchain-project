@@ -26,5 +26,11 @@ module.exports = function TransactionValidator() {
     );
   };
 
-  return { isValidSendingTransactionValue, isTransactionSignatureValid };
+  const isValidSenderAddress = (base64EncodedPublicKey, senderAddress) => {
+    const publicKey = Buffer.from(base64EncodedPublicKey, 'base64').toString('ascii');
+    const sha256OfPublicKey = crypto.createHmac('sha256', publicKey).digest('hex');
+    return senderAddress === sha256OfPublicKey;
+  };
+
+  return { isValidSendingTransactionValue, isTransactionSignatureValid, isValidSenderAddress };
 };

@@ -6,11 +6,7 @@ const InvalidTransactionRequestError = require('../../../src/errors/invalid-tran
 describe('ErrorHandlerMiddleware', () => {
   test('Should return error', () => {
     const errorHandlerMiddleware = new ErrorHandlerMiddleware();
-    const error = new InvalidTransactionRequestError({
-      coinBalance: 0,
-      coinToTransfer: 1,
-      coinShortage: 1
-    });
+    const error = new InvalidTransactionRequestError({ errorData: { err: 'some error' } });
     const request = {
       protocol: 'https',
       hostname: 'example.com',
@@ -39,11 +35,7 @@ describe('ErrorHandlerMiddleware', () => {
         {
           code: 'BLOCKCHAIN_DOMAIN_INVALID_TRANSACTION_REQUEST_ERROR',
           error: 'BLOCKCHAIN_DOMAIN_INVALID_TRANSACTION_REQUEST_ERROR',
-          errorData: {
-            coinBalance: 0,
-            coinShortage: 1,
-            coinToTransfer: 1
-          },
+          errorData: { err: 'some error' },
           message: 'Invalid transaction request'
         }
       ]

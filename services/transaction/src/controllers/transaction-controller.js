@@ -7,13 +7,22 @@ const {
 } = require('../constants');
 const { getAddressBalance } = require('../helpers');
 const TransactionValidator = require('../validators/transaction-validation')();
-const InvalidTransactionRequestError = require('../errors/invalid-transaction-request-error');
+const InsufficientTransactionCoinError = require('../errors/insufficient-transaction-coin-error');
 const InvalidTransactionSignatureError = require('../errors/invalid-transaction-signature-error');
+const InvalidTransactionSenderAddressError = require('../errors/invalid-transaction-sender-address-error');
 
 module.exports = function TransactionController({ services, repositories }) {
   const createTransaction = async function createTransaction({ transaction, validation }) {
     const { signature, publicKey: base64EncodedPublicKey } = validation;
     const { sender, receiver, transactionValue, feeValue, message } = transaction;
+
+    const isValidSenderAddress = TransactionValidator.isValidSenderAddress(
+      base64EncodedPublicKey,
+      sender
+    );
+    if (!isValidSenderAddress) {
+      throw new InvalidTransactionSenderAddressError();
+    }
 
     const isValidSignature = TransactionValidator.isTransactionSignatureValid(
       signature,
@@ -34,7 +43,7 @@ module.exports = function TransactionController({ services, repositories }) {
     );
     if (!isValidTransactionValue) {
       const coinShortage = Number((coinToTransfer - coinBalance).toFixed(NUMBER_OF_DECIMAL_PLACES));
-      throw new InvalidTransactionRequestError({ coinBalance, coinToTransfer, coinShortage });
+      throw new InsufficientTransactionCoinError({ coinBalance, coinToTransfer, coinShortage });
     }
 
     const uuid = services.uuidService.uuidV4();
