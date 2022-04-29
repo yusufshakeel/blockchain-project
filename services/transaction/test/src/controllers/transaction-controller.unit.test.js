@@ -1,11 +1,11 @@
 'use strict';
 
-const crypto = require('crypto');
 const TransactionController = require('../../../src/controllers/transaction-controller');
 const InvalidTransactionRequestError = require('../../../src/errors/invalid-transaction-request-error');
 const InvalidTransactionSignatureError = require('../../../src/errors/invalid-transaction-signature-error');
 const InvalidTransactionSenderAddressError = require('../../../src/errors/invalid-transaction-sender-address-error');
 const fakeCreds = require('../../test-data/fake-creds.json');
+const { getSignature } = require('../../helpers');
 
 describe('Testing TransactionController', () => {
   beforeEach(() => {
@@ -58,15 +58,6 @@ describe('Testing TransactionController', () => {
   };
 
   const transactionController = TransactionController({ services, repositories });
-
-  const getSignature = transaction => {
-    return crypto
-      .sign('sha256', Buffer.from(JSON.stringify(transaction)), {
-        key: Buffer.from(fakeCreds.privateKey, 'base64').toString('ascii'),
-        padding: crypto.constants.RSA_PKCS1_PSS_PADDING
-      })
-      .toString('base64');
-  };
 
   describe('Testing createTransaction', () => {
     describe('When there are enough coins with the sender', () => {
