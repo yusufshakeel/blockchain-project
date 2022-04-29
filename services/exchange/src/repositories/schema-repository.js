@@ -32,6 +32,14 @@ module.exports = function SchemaRepository({ parser }) {
       path.join(SCHEMA_LOCATION_V1, 'block-statistics-response.json')
     );
 
+    const addressCoinBalanceRequestParams = await parser.dereference(
+      path.join(SCHEMA_LOCATION_V1, 'address-coin-balance-request-params.json')
+    );
+
+    const addressCoinBalanceResponse = await parser.dereference(
+      path.join(SCHEMA_LOCATION_V1, 'address-coin-balance-response.json')
+    );
+
     const v1Schemas = {
       blockchain: {
         block: {
@@ -47,6 +55,13 @@ module.exports = function SchemaRepository({ parser }) {
         requestHeader: requestHeader,
         mempoolTransactions: {
           response: mempoolTransactionsResponse
+        },
+        addressCoinBalance: {
+          request: {
+            headers: requestHeader,
+            params: addressCoinBalanceRequestParams
+          },
+          response: addressCoinBalanceResponse
         }
       }
     };
