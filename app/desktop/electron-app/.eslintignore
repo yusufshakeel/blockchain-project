@@ -1,0 +1,4 @@
+**/dist/**
+**/resources/**
+**/node_modules/**
+**/src/static/**
