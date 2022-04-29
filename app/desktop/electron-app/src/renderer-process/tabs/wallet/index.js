@@ -50,6 +50,7 @@ module.exports = function walletTab({ ipcRenderer, clipboard }) {
       const credentialsJson = JSON.parse(walletCredentialsJsonString);
 
       document.getElementById('wallet-address').value = credentialsJson.address;
+      document.getElementById('address-on-home-tab').innerHTML = credentialsJson.address;
       document.getElementById('wallet-public-key').value = '***** REDACTED *****';
       document.getElementById('wallet-public-key-hidden').value = credentialsJson.publicKey;
       document.getElementById('wallet-private-key').value = '***** REDACTED *****';

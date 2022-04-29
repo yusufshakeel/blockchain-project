@@ -8,7 +8,9 @@ module.exports = () => {
         style="height: 96px; width: 96px;" alt="logo"
         class="img-fluid  mx-auto d-block my-3">
       <div id="coin-balance-container" class="text-center">
-        <h1 id="coin-balance" class="display-4">0.0 CC</h1>
+        <h1 id="coin-balance" class="display-4 mb-3">0.0000 CC</h1>
+        <p><a type="button" class="btn btn-sm btn-outline-secondary" id="refresh-get-coin-balance-btn">Refresh</a></p>
+        <p class="text-center"><small>Address:</small> <small id="address-on-home-tab" style="max-width: 200px; overflow: hidden">Not yet set!</small></p>
       </div>
       <hr>
       <div id="home-action-section">
@@ -58,7 +60,7 @@ module.exports = () => {
               </div>
             </div>
           </div>
-          <!-- sendS -->
+          <!-- send -->
           <div class="tab-pane" id="pills-pills-home-send" role="tabpanel" aria-labelledby="pills-pills-home-send-tab">
             <div class="row">
               <div class="col-sm-6">

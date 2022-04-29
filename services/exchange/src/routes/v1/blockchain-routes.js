@@ -11,7 +11,6 @@ module.exports = function BlockchainRoutes(fastify, options) {
     schema: {
       tags: ['Blockchain'],
       description: 'This will return block details by its index.',
-      headers: schemaRepository.v1.blockchain.requestHeader,
       params: schemaRepository.v1.blockchain.block.request.params,
       response: {
         200: schemaRepository.v1.blockchain.block.response
@@ -31,7 +30,6 @@ module.exports = function BlockchainRoutes(fastify, options) {
     schema: {
       tags: ['Blockchain'],
       description: 'This will return statistics.',
-      headers: schemaRepository.v1.blockchain.requestHeader,
       response: {
         200: schemaRepository.v1.blockchain.block.statistics.response
       }

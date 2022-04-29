@@ -12,7 +12,6 @@ module.exports = function TransactionRoutes(fastify, options) {
       tags: ['Transactions'],
       description:
         'This will return the Mempool which consists of all the transactions that are yet to be mined.',
-      headers: schemaRepository.v1.blockchain.requestHeader,
       response: {
         200: schemaRepository.v1.blockchain.mempoolTransactions.response
       }

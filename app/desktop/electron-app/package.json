@@ -65,6 +65,7 @@
     "spectron": "^15.0.0"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "electron-window-state": "^5.0.3"
   }
 }
