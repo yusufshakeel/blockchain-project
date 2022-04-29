@@ -1,0 +1,70 @@
+{
+  "name": "coincoin",
+  "version": "0.1.0",
+  "description": "This is a simple blockchain project.",
+  "main": "src/main-process/main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec electron .",
+    "precommit": "npm run lint && npm run search-circular-dependencies && npm run test:all",
+    "prebuild": "rm -rf dist",
+    "build:all-platform": "npm run prebuild && npx electron-builder -mwl",
+    "build:for-mac": "npm run prebuild && npx electron-builder -m",
+    "lint": "npm run lint:src && npm run lint:test",
+    "lint:src": "npx eslint -c .eslintrc.json src",
+    "lint:test": "npx eslint -c .eslintrc.json test/unit",
+    "lint:fix": "npx eslint --fix -c .eslintrc.json src test/unit",
+    "lint:fix:test": "npx eslint --fix -c .eslintrc.json test/unit",
+    "lint:fix:src": "npx eslint --fix -c .eslintrc.json src",
+    "test:all": "npm run bootstrap && npm run test:unit",
+    "test:unit": "npm run bootstrap && jest -c jest.config.json",
+    "search-circular-dependencies": "npx madge -c src",
+    "bootstrap": "mkdirp output"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusufshakeel/blockchain-project.git"
+  },
+  "keywords": [
+    "blockchain",
+    "javascript",
+    "node",
+    "nodejs"
+  ],
+  "author": "Yusuf Shakeel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yusufshakeel/blockchain-project/issues"
+  },
+  "homepage": "https://github.com/yusufshakeel/blockchain-project#readme",
+  "build": {
+    "appId": "com.yusufshakeel.coincoin",
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "resources/app-icons/stable/logo.icns"
+    },
+    "dmg": {
+      "background": "resources/app-icons/stable/install-background.tiff",
+      "icon": "resources/app-icons/stable/logo.icns"
+    }
+  },
+  "engines": {
+    "node": ">14.0.0"
+  },
+  "devDependencies": {
+    "electron": "^13.1.5",
+    "electron-builder": "^22.11.7",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "jest": "^27.0.6",
+    "madge": "^5.0.1",
+    "nodemon": "^2.0.9",
+    "prettier": "^2.3.2",
+    "spectron": "^15.0.0"
+  },
+  "dependencies": {
+    "electron-window-state": "^5.0.3"
+  }
+}

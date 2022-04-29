@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CoinCoin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col px-0">
+      <ul class="nav nav-pills mb-3 nav-fill bg-light" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-wallet-tab" data-bs-toggle="pill" data-bs-target="#pills-wallet" type="button" role="tab" aria-controls="pills-wallet" aria-selected="false">Wallet</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-settings-tab" data-bs-toggle="pill" data-bs-target="#pills-settings" type="button" role="tab" aria-controls="pills-settings" aria-selected="false">Settings</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">Home</div>
+        <div class="tab-pane" id="pills-wallet" role="tabpanel" aria-labelledby="pills-wallet-tab">Wallet</div>
+        <div class="tab-pane" id="pills-settings" role="tabpanel" aria-labelledby="pills-settings-tab">Settings</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="bootstrap/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../renderer-process/app.js"></script>
+</body>
+</html>
