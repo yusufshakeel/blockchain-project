@@ -13,9 +13,6 @@ module.exports = () => {
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="pills-settings-tab-exchange" data-bs-toggle="pill" data-bs-target="#pills-settings-exchange" type="button" role="tab" aria-controls="pills-settings-exchange" aria-selected="true">Exchange</button>
           </li>
-          <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-settings-tab-transaction" data-bs-toggle="pill" data-bs-target="#pills-pills-settings-transaction" type="button" role="tab" aria-controls="pills-pills-settings-transaction" aria-selected="false">Transactions</button>
-          </li>
         </ul>
         <div class="tab-content">
           <!-- EXCHANGE -->
@@ -29,19 +26,6 @@ module.exports = () => {
             <div class="mb-3">
               <label for="settings-network-exchange-port" class="form-label">Port</label>
               <input type="number" class="form-control" id="settings-network-exchange-port" step="1" min="10000" value="10101">
-            </div>
-          </div>
-          <!-- TRANSACTIONS -->
-          <div class="tab-pane" id="pills-pills-settings-transaction" role="tabpanel" aria-labelledby="pills-pills-settings-transaction-tab">
-            <div class="mb-3">
-              <label for="settings-network-transaction" class="form-label">Network</label>
-              <div class="input-group">
-                <input type="text" class="form-control" id="settings-network-transaction" value="localhost" readonly>
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="settings-network-transaction-port" class="form-label">Port</label>
-              <input type="number" class="form-control" id="settings-network-transaction-port" step="1" min="10000" value="10103">
             </div>
           </div>
         </div>

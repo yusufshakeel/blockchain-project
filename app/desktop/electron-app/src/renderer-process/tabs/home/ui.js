@@ -40,18 +40,28 @@ module.exports = () => {
                 <div class="mb-3">
                   <label for="buy-number-of-coins" class="form-label">Buy Coins</label>
                   <div class="input-group">
-                    <input type="number" class="form-control" id="buy-1cc-rate" value="1" step="0.0001" min="0.0001">
+                    <input type="number" class="form-control" id="buy-number-of-coins" value="1" step="0.0001" min="0.0001">
+                    <span class="input-group-text">CC</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                 <div class="mb-3">
                   <label for="buy-total-amount" class="form-label">Total Amount</label>
                   <div class="input-group">
                     <span class="input-group-text">INR</span>
                     <input type="text" class="form-control" id="buy-total-amount" value="100.00" readonly>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="mb-3">
+                  <label for="buy-coin-fee" class="form-label">Fee Coins <small><abbr title="To be deducted from your number of buy coins">?</abbr></small></label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="buy-coin-fee" value="0" step="0.0001" min="0.0001" readonly>
+                    <span class="input-group-text">CC</span>
                   </div>
                 </div>
               </div>

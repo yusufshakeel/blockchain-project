@@ -23,7 +23,7 @@ function RestClient() {
   const post = async ({ requestBody, url }) => {
     try {
       const response = await axios({
-        method: 'get',
+        method: 'post',
         url,
         data: requestBody,
         headers: {
