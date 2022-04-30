@@ -50,10 +50,16 @@ module.exports = function walletTab({ ipcRenderer, clipboard }) {
       const credentialsJson = JSON.parse(walletCredentialsJsonString);
 
       document.getElementById('wallet-address').value = credentialsJson.address;
+      document.getElementById('address-on-home-tab').innerHTML =
+        credentialsJson.address.substring(0, 8) + '...';
+
       document.getElementById('wallet-public-key').value = '***** REDACTED *****';
       document.getElementById('wallet-public-key-hidden').value = credentialsJson.publicKey;
+
       document.getElementById('wallet-private-key').value = '***** REDACTED *****';
       document.getElementById('wallet-private-key-hidden').value = credentialsJson.privateKey;
+
+      document.getElementById('coin-balance').innerHTML = '0.0000 CC';
     } catch (e) {
       ipcRenderer.send(IPC_EVENT_OPEN_MESSAGE_BOX, { message: e.message, messageType: 'error' });
     }

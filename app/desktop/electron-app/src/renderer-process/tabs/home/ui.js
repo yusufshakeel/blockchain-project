@@ -8,7 +8,9 @@ module.exports = () => {
         style="height: 96px; width: 96px;" alt="logo"
         class="img-fluid  mx-auto d-block my-3">
       <div id="coin-balance-container" class="text-center">
-        <h1 id="coin-balance" class="display-4">0.0 CC</h1>
+        <h1 id="coin-balance" class="display-4 mb-3">0.0000 CC</h1>
+        <p><a type="button" class="btn btn-sm btn-outline-secondary" id="refresh-get-coin-balance-btn">Refresh</a></p>
+        <p class="text-center"><small>Address:</small> <small id="address-on-home-tab" style="max-width: 200px; overflow: hidden">Not yet set!</small></p>
       </div>
       <hr>
       <div id="home-action-section">
@@ -38,13 +40,14 @@ module.exports = () => {
                 <div class="mb-3">
                   <label for="buy-number-of-coins" class="form-label">Buy Coins</label>
                   <div class="input-group">
-                    <input type="number" class="form-control" id="buy-1cc-rate" value="1" step="0.0001" min="0.0001">
+                    <input type="number" class="form-control" id="buy-number-of-coins" value="1" step="0.0001" min="0.0001">
+                    <span class="input-group-text">CC</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-12">
+              <div class="col-sm-6">
                 <div class="mb-3">
                   <label for="buy-total-amount" class="form-label">Total Amount</label>
                   <div class="input-group">
@@ -53,12 +56,22 @@ module.exports = () => {
                   </div>
                 </div>
               </div>
+              <div class="col-sm-6">
+                <div class="mb-3">
+                  <label for="buy-coin-fee" class="form-label">Fee Coins <small><abbr title="To be deducted from your number of buy coins">?</abbr></small></label>
+                  <div class="input-group">
+                    <a type="button" class="btn btn-outline-secondary" id="refresh-buy-coin-fee-btn"><i class="bi bi-arrow-clockwise"></i></a>
+                    <input type="text" class="form-control" id="buy-coin-fee" value="0" step="0.0001" min="0.0001" readonly>
+                    <span class="input-group-text">CC</span>
+                  </div>
+                </div>
+              </div>
               <div class="col-sm-12">
                 <a type="button" class="btn btn-success float-end" id="buy-coins-btn">BUY COINS</a>
               </div>
             </div>
           </div>
-          <!-- sendS -->
+          <!-- send -->
           <div class="tab-pane" id="pills-pills-home-send" role="tabpanel" aria-labelledby="pills-pills-home-send-tab">
             <div class="row">
               <div class="col-sm-6">
@@ -74,6 +87,7 @@ module.exports = () => {
                   <label for="send-number-of-coins" class="form-label">Send Coins</label>
                   <div class="input-group">
                     <input type="number" class="form-control" id="send-number-of-coins" value="0.0001" step="0.0001" min="0.0001">
+                    <span class="input-group-text">CC</span>
                   </div>
                 </div>
               </div>
@@ -82,6 +96,7 @@ module.exports = () => {
                   <label for="send-number-of-fee-coins" class="form-label">Fee Coins</label>
                   <div class="input-group">
                     <input type="number" class="form-control" id="send-number-of-fee-coins" value="0" step="0.0001" min="0">
+                    <span class="input-group-text">CC</span>
                   </div>
                 </div>
               </div>
