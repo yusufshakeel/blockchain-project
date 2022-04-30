@@ -35,4 +35,19 @@ describe('Testing BlockchainRepository', () => {
     await blockchainRepository.fetchAllBlocks(1);
     expect(BlockchainModel.find).toHaveBeenCalledTimes(1);
   });
+
+  test('Should be able to fetch latest N blocks', async () => {
+    const limit = jest.fn(() => []);
+    const sort = jest.fn(() => ({ limit }));
+    const BlockchainModel = {
+      find: jest.fn(() => ({ sort }))
+    };
+    const blockchainRepository = new BlockchainRepository({ BlockchainModel });
+    await blockchainRepository.fetchLatestNBlocks(10);
+    expect(BlockchainModel.find).toHaveBeenCalledTimes(1);
+    expect(sort).toHaveBeenCalledTimes(1);
+    expect(sort).toHaveBeenCalledWith({ index: -1 });
+    expect(limit).toHaveBeenCalledTimes(1);
+    expect(limit).toHaveBeenCalledWith(10);
+  });
 });

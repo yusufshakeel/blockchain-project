@@ -1,0 +1,40 @@
+{
+  "$id": "buyCoinResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "transactionUUID",
+        "message",
+        "purchaseSummary"
+      ],
+      "properties": {
+        "transactionUUID": {
+          "$ref": "../../domain/v1/uuid.json#"
+        },
+        "message": {
+          "type": "string"
+        },
+        "purchaseSummary": {
+          "type": "object",
+          "required": [
+            "coinsPurchased",
+            "feeCoins"
+          ],
+          "properties": {
+            "coinsPurchased": {
+              "$ref": "../../domain/v1/coin.json#"
+            },
+            "feeCoins": {
+              "$ref": "../../domain/v1/coin.json#"
+            }
+          }
+        }
+      }
+    }
+  }
+}

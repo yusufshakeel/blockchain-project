@@ -40,6 +40,18 @@ module.exports = function SchemaRepository({ parser }) {
       path.join(SCHEMA_LOCATION_V1, 'address-coin-balance-response.json')
     );
 
+    const buyCoinRequestBody = await parser.dereference(
+      path.join(SCHEMA_LOCATION_V1, 'buy-coin-request-body.json')
+    );
+
+    const buyCoinResponse = await parser.dereference(
+      path.join(SCHEMA_LOCATION_V1, 'buy-coin-response.json')
+    );
+
+    const buyCoinFeeResponse = await parser.dereference(
+      path.join(SCHEMA_LOCATION_V1, 'buy-coin-fee-response.json')
+    );
+
     const v1Schemas = {
       blockchain: {
         block: {
@@ -62,6 +74,18 @@ module.exports = function SchemaRepository({ parser }) {
             params: addressCoinBalanceRequestParams
           },
           response: addressCoinBalanceResponse
+        },
+        coin: {
+          buy: {
+            request: {
+              headers: requestHeader,
+              body: buyCoinRequestBody
+            },
+            response: buyCoinResponse
+          },
+          buyFee: {
+            response: buyCoinFeeResponse
+          }
         }
       }
     };

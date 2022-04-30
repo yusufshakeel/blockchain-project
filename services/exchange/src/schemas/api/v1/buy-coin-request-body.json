@@ -1,0 +1,26 @@
+{
+  "$id": "buyCoinRequestBody",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "address",
+        "coinsToBuy"
+      ],
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "This is the address of the receiver who wants the coin."
+        },
+        "coinsToBuy": {
+          "$ref": "../../domain/v1/coin.json#",
+          "description": "This is the number of coins to buy."
+        }
+      }
+    }
+  }
+}

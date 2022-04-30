@@ -1,0 +1,20 @@
+{
+  "$id": "buyCoinFeeResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "feeCoin"
+      ],
+      "properties": {
+        "feeCoin": {
+          "$ref": "../../domain/v1/coin.json#"
+        }
+      }
+    }
+  }
+}
