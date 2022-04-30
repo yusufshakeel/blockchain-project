@@ -210,16 +210,6 @@
 								"key": "Content-Type",
 								"value": "application/json",
 								"type": "default"
-							},
-							{
-								"key": "x-public-key",
-								"value": "",
-								"type": "default"
-							},
-							{
-								"key": "x-encrypted-message",
-								"value": "",
-								"type": "default"
 							}
 						],
 						"body": {
@@ -369,6 +359,154 @@
 			"name": "EXCHANGE",
 			"item": [
 				{
+					"name": "Buy Coin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"address\": \"20d772b858f4512ea9902b52ffe13fa90f48a9dc26611faebcb31c1640b8ec05\",\n        \"coinsToBuy\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/coins/buy",
+							"host": [
+								"{{DOMAIN_URL_EXCHANGE}}"
+							],
+							"path": [
+								"v1",
+								"coins",
+								"buy"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Buy Coin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"data\": {\n        \"address\": \"20d772b858f4512ea9902b52ffe13fa90f48a9dc26611faebcb31c1640b8ec05\",\n        \"coinsToBuy\": 1\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/coins/buy",
+									"host": [
+										"{{DOMAIN_URL_EXCHANGE}}"
+									],
+									"path": [
+										"v1",
+										"coins",
+										"buy"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "189"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 09:59:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"transactionUUID\": \"81fb1448-e40a-4eed-96cc-3c496c418f40\",\n        \"message\": \"Purchased coins will show in your balance in few minutes.\",\n        \"purchaseSummary\": {\n            \"coinsPurchased\": 1,\n            \"feeCoins\": 0\n        }\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Get fee to buy coin",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/coins/buy-coin-fee",
+							"host": [
+								"{{DOMAIN_URL_EXCHANGE}}"
+							],
+							"path": [
+								"v1",
+								"coins",
+								"buy-coin-fee"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get fee to buy coin",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/coins/buy-coin-fee",
+									"host": [
+										"{{DOMAIN_URL_EXCHANGE}}"
+									],
+									"path": [
+										"v1",
+										"coins",
+										"buy-coin-fee"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "22"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 30 Apr 2022 09:47:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"feeCoin\": 0\n    }\n}"
+						}
+					]
+				},
+				{
 					"name": "Get Block by Id",
 					"request": {
 						"method": "GET",
@@ -380,14 +518,14 @@
 							}
 						],
 						"url": {
-							"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/blocks/5",
+							"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/blocks/0",
 							"host": [
 								"{{DOMAIN_URL_EXCHANGE}}"
 							],
 							"path": [
 								"v1",
 								"blocks",
-								"5"
+								"0"
 							]
 						}
 					},
@@ -647,6 +785,73 @@
 							],
 							"cookie": [],
 							"body": "{\n    \"data\": {\n        \"transactions\": [\n            {\n                \"uuid\": \"3186fc6d-ba57-48ee-b5ff-942752a34381\",\n                \"sender\": \"39b402f1a7e0c60578020f54581f3dfc450225406f19bf7b7684b908a0404794\",\n                \"receiver\": \"39b402f1a7e0c60578020f54581f3dfc450225406f19bf7b7684b908a0404794\",\n                \"transactionValue\": 0.9999,\n                \"feeValue\": 0.0001,\n                \"rewardValue\": 0,\n                \"message\": \"string\",\n                \"timestamp\": \"2022-03-29T03:52:13.628Z\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Address Coin Balance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/address/20d772b858f4512ea9902b52ffe13fa90f48a9dc26611faebcb31c1640b8ec05/coin-balance",
+							"host": [
+								"{{DOMAIN_URL_EXCHANGE}}"
+							],
+							"path": [
+								"v1",
+								"address",
+								"20d772b858f4512ea9902b52ffe13fa90f48a9dc26611faebcb31c1640b8ec05",
+								"coin-balance"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Address Coin Balance",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/address/1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca/coin-balance",
+									"host": [
+										"{{DOMAIN_URL_EXCHANGE}}"
+									],
+									"path": [
+										"v1",
+										"address",
+										"1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca",
+										"coin-balance"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "72"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 29 Apr 2022 17:45:17 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"totalCoinsSent\": 0,\n        \"totalCoinsReceived\": 128,\n        \"coinBalance\": 128\n    }\n}"
 						}
 					]
 				}
