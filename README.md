@@ -1,6 +1,15 @@
 # blockchain-project
 This is a simple blockchain project.
 
+![logo](./resources/logo-128px.png)
+
+# CoinCoin
+
+This project creates a simple cryptocurrency called CoinCoin (CC) and also gives you the following
+* Backend REST APIs using NodeJS.
+* Desktop app for macOS using Electron
+* Website using React
+
 ## Table of Content
 
 * [Getting started](#getting-started)
