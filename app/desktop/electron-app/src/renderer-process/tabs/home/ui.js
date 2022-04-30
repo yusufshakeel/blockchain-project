@@ -86,6 +86,7 @@ module.exports = () => {
                   <label for="send-number-of-coins" class="form-label">Send Coins</label>
                   <div class="input-group">
                     <input type="number" class="form-control" id="send-number-of-coins" value="0.0001" step="0.0001" min="0.0001">
+                    <span class="input-group-text">CC</span>
                   </div>
                 </div>
               </div>
@@ -94,6 +95,7 @@ module.exports = () => {
                   <label for="send-number-of-fee-coins" class="form-label">Fee Coins</label>
                   <div class="input-group">
                     <input type="number" class="form-control" id="send-number-of-fee-coins" value="0" step="0.0001" min="0">
+                    <span class="input-group-text">CC</span>
                   </div>
                 </div>
               </div>

@@ -68,5 +68,12 @@ module.exports = function Apis() {
     });
   };
 
-  return { getBalance, getFeeToBuyCoin, buyCoins };
+  const sendCoins = async ({ host, port, requestBody }) => {
+    return restClient.post({
+      url: `http://${host}:${port}/blockchain/v1/transactions`,
+      requestBody
+    });
+  };
+
+  return { getBalance, getFeeToBuyCoin, buyCoins, sendCoins };
 };
