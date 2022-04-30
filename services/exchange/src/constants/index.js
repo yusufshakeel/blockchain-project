@@ -1,9 +1,16 @@
 'use strict';
 
+const minerRootWallet = require('../../seed/miner-root-wallet.json');
+
 module.exports = {
   HTTP_HOST: '0.0.0.0',
   HTTP_PORT: 10101,
   PROJECT_TITLE: 'Blockchain - Exchange',
+  HTTP_TRANSACTION_SERVICE_DOMAIN_ADDRESS: 'http://localhost:10103/blockchain',
+  CACHE_KEY_AVERAGE_FEE_TO_BUY_COINS: 'CACHE_KEY_AVERAGE_FEE_TO_BUY_COINS',
+  EXCHANGE_MINER_ROOT_WALLET: minerRootWallet,
+  TTL_FOR_CACHE_IN_SECONDS: 300,
+  LATEST_NUMBER_OF_BLOCKS_FOR_FINDING_FEE_TO_BUY_COINS: 128,
   NUMBER_OF_DECIMAL_PLACES: 4,
   MONGODB_HOST: process.env.PAYMENT_MONGODB_HOST || '0.0.0.0',
   MONGODB_PORT: process.env.PAYMENT_MONGODB_PORT || 27017,

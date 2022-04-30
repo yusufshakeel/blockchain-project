@@ -15,4 +15,8 @@ module.exports = function BlockchainRepository({ BlockchainModel }) {
   this.fetchAllBlocks = async function () {
     return BlockchainModel.find();
   };
+
+  this.fetchLatestNBlocks = async function (numberOfBlocks) {
+    return BlockchainModel.find().sort({ index: -1 }).limit(numberOfBlocks);
+  };
 };

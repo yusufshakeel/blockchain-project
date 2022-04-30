@@ -11,7 +11,6 @@ module.exports = function AddressRoutes(fastify, options) {
     schema: {
       tags: ['Address'],
       description: 'This will return the coin balance of the given address.',
-      headers: schemaRepository.v1.blockchain.addressCoinBalance.request.headers,
       params: schemaRepository.v1.blockchain.addressCoinBalance.request.params,
       response: {
         200: schemaRepository.v1.blockchain.addressCoinBalance.response

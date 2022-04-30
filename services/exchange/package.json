@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "arecibo": "^2.0.0",
+    "axios": "^0.27.2",
     "cron": "^1.8.2",
     "fastify": "^3.27.4",
     "fastify-swagger": "^5.0.0",
@@ -49,6 +50,7 @@
     "json-schema-ref-parser": "^9.0.9",
     "lodash": "^4.17.21",
     "mongoose": "^6.2.8",
+    "node-cache": "^5.1.2",
     "uuid": "^8.3.2"
   }
 }
