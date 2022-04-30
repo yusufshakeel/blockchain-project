@@ -60,6 +60,7 @@ module.exports = () => {
                 <div class="mb-3">
                   <label for="buy-coin-fee" class="form-label">Fee Coins <small><abbr title="To be deducted from your number of buy coins">?</abbr></small></label>
                   <div class="input-group">
+                    <a type="button" class="btn btn-outline-secondary" id="refresh-buy-coin-fee-btn"><i class="bi bi-arrow-clockwise"></i></a>
                     <input type="text" class="form-control" id="buy-coin-fee" value="0" step="0.0001" min="0.0001" readonly>
                     <span class="input-group-text">CC</span>
                   </div>

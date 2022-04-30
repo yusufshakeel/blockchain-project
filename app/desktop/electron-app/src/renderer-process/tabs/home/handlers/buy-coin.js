@@ -13,6 +13,7 @@ module.exports = function buyCoin({ ipcRenderer, apis }) {
   const inputBuyTotalAmountElement = document.getElementById('buy-total-amount');
   const inputBuyCoinFeeElement = document.getElementById('buy-coin-fee');
   const exchangeRatePerCCElement = document.getElementById('buy-1cc-rate');
+  const refreshBuyCoinFeeBtn = document.getElementById('refresh-buy-coin-fee-btn');
 
   const setDetails = () => {
     host = document.getElementById('settings-network-exchange').value;
@@ -81,7 +82,7 @@ module.exports = function buyCoin({ ipcRenderer, apis }) {
     }
 
     if (response?.data) {
-      inputBuyCoinFeeElement.innerHTML = Number(response.data.feeCoin).toFixed(
+      inputBuyCoinFeeElement.value = Number(response.data.feeCoin).toFixed(
         NUMBER_OF_DECIMAL_PLACES
       );
     } else {
@@ -91,5 +92,8 @@ module.exports = function buyCoin({ ipcRenderer, apis }) {
       });
     }
   };
-  setInterval(() => getBuyCoinFee(), 10000);
+
+  refreshBuyCoinFeeBtn.addEventListener('click', () => {
+    getBuyCoinFee();
+  });
 };

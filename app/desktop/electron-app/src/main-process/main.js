@@ -18,10 +18,10 @@ const userDataLocation = (app || remote.app).getPath('userData');
 function createWindow() {
   const windowState = windowStateKeeper({
     defaultWidth: 400,
-    defaultHeight: 700
+    defaultHeight: 960
   });
 
-  const maxDimensions = !isDevEnv ? { maxWidth: 400, maxHeight: 700 } : {};
+  const maxDimensions = !isDevEnv ? { maxWidth: 400, maxHeight: 960 } : {};
 
   mainWindow = new BrowserWindow({
     maximizable: !!isDevEnv,
