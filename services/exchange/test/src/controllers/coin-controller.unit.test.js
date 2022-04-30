@@ -12,6 +12,46 @@ describe('Testing CoinController', () => {
     jest.clearAllMocks();
   });
 
+  describe('Testing buyCoins', () => {
+    beforeEach(async () => {
+      cacheService.unset(CACHE_KEY_AVERAGE_FEE_TO_BUY_COINS);
+    });
+
+    const services = {
+      cacheService,
+      transactionSignatureService: {
+        getSignature: jest.fn(() => 'fakeSignature')
+      },
+      restClientService: {
+        post: jest.fn(() => ({
+          data: { uuid: '81fb1448-e40a-4eed-96cc-3c496c418f40' }
+        }))
+      }
+    };
+
+    const repositories = {
+      blockchainRepository: {
+        fetchLatestNBlocks: jest.fn(() => fakeBlockchain)
+      }
+    };
+
+    const coinController = CoinController({ services, repositories });
+
+    test('Should be able to buy coins', async () => {
+      const response = await coinController.buyCoins({
+        address: '20d772b858f4512ea9902b52ffe13fa90f48a9dc26611faebcb31c1640b8ec05',
+        coinsToBuy: 1
+      });
+      expect(response).toStrictEqual({
+        data: {
+          transactionUUID: '81fb1448-e40a-4eed-96cc-3c496c418f40',
+          message: 'Purchased coins will show in your balance in few minutes.',
+          purchaseSummary: { coinsPurchased: 0.9999, feeCoins: 0.0001 }
+        }
+      });
+    });
+  });
+
   describe('Testing fetchFeeToBuyCoins', () => {
     beforeEach(async () => {
       cacheService.unset(CACHE_KEY_AVERAGE_FEE_TO_BUY_COINS);
