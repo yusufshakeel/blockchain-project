@@ -17,6 +17,9 @@
           "properties": {
             "totalNumberOfBlocksMined": {
               "type": "integer"
+            },
+            "sizeOfBlockchainInBytes": {
+              "type": "number"
             }
           }
         }

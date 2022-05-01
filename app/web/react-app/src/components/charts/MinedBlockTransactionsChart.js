@@ -8,7 +8,7 @@ function MinedBlockTransactionsChart(props) {
     return {
       categories: [`Block ${index}`, ...result.categories],
       numberOfTransactions: [numberOfTransactions, ...result.numberOfTransactions],
-      colors: ['#4673ff', ...result.colors]
+      colors: ["#4673ff", ...result.colors]
     };
   }, { categories: [], numberOfTransactions: [], colors: [] });
 
@@ -34,11 +34,15 @@ function MinedBlockTransactionsChart(props) {
   };
 
   return (
-    <Chart
-      options={data.options}
-      series={data.series}
-      type="bar"
-    />
+    <div>
+      <h4>Transactions/Block</h4>
+      <p>Average: {Number(numberOfTransactions.reduce((sum, txn) => txn + sum, 0) / numberOfTransactions.length)}</p>
+      <Chart
+        options={data.options}
+        series={data.series}
+        type="bar"
+      />
+    </div>
   );
 }
 

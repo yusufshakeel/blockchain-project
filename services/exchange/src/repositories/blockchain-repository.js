@@ -6,9 +6,10 @@ module.exports = function BlockchainRepository({ BlockchainModel }) {
   };
 
   this.fetchStatistics = async function () {
-    const totalNumberOfBlocksMined = await BlockchainModel.countDocuments();
+    const stats = await BlockchainModel.collection.stats();
     return {
-      totalNumberOfBlocksMined
+      totalNumberOfBlocksMined: stats.count,
+      sizeOfBlockchainInBytes: stats.size
     };
   };
 

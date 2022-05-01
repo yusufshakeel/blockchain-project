@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Table } from "react-bootstrap";
+import { Container, Row, Col, Table, Card } from "react-bootstrap";
+import { Box, Hdd } from "react-bootstrap-icons";
 
 import MinedBlockCoinsChart from "../components/charts/MinedBlockCoinsChart";
 import MinedBlockTransactionsChart from "../components/charts/MinedBlockTransactionsChart";
 import MinedBlockRow from "../components/MinedBlockRow";
 import MempoolTransactionRow from "../components/MempoolTransactionRow";
-import MinedTransactionRow from "../components/MinedTransactionRow";
 
+import MinedTransactionRow from "../components/MinedTransactionRow";
 import ApiHandlers from "../api-handlers";
 
 const apiHandler = new ApiHandlers();
@@ -54,13 +55,27 @@ function ExplorerPage() {
           <h1 className="text-center mt-2 my-5">Explorer</h1>
         </Col>
       </Row>
+      <Row className="my-3">
+        <Col sm="12" md="4">
+          <Card>
+            <Card.Body>
+              <Box/> Blocks Mined: ---
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col sm="12" md="4">
+          <Card>
+            <Card.Body>
+              <Hdd/> Blockchain size: --- GB
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
       <Row>
         <Col>
-          <h4>Coins/Block</h4>
           <MinedBlockCoinsChart blocks={latestBlocks}/>
         </Col>
         <Col>
-          <h4>Transactions/Block</h4>
           <MinedBlockTransactionsChart blocks={latestBlocks}/>
         </Col>
       </Row>
