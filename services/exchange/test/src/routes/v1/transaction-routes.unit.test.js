@@ -9,7 +9,10 @@ describe('Testing transaction routes', () => {
   beforeAll(async () => {
     const controllers = {
       transactionController: {
-        memPool: jest.fn(() => ({
+        fetchAllPendingTransactions: jest.fn(() => ({
+          data: { transactions: [] }
+        })),
+        fetchLatestMinedTransactionsFromMempool: jest.fn(() => ({
           data: { transactions: [] }
         }))
       }
@@ -35,6 +38,19 @@ describe('Testing transaction routes', () => {
           transactions: []
         }
       });
+    });
+  });
+
+  describe('Testing get latest mined transactions from mempool', () => {
+    test('Should return result', async () => {
+      const response = await fastify.inject({
+        method: 'GET',
+        url: '/blockchain/v1/transactions/mempool/mined-transactions',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      expect(response.statusCode).toBe(200);
     });
   });
 });
