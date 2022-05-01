@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Table, Card } from "react-bootstrap";
-import { Box, Hdd } from "react-bootstrap-icons";
+import { Box, Circle, Hdd } from "react-bootstrap-icons";
 
 import MinedBlockCoinsChart from "../components/charts/MinedBlockCoinsChart";
 import MinedBlockTransactionsChart from "../components/charts/MinedBlockTransactionsChart";
@@ -69,10 +69,17 @@ function ExplorerPage() {
             </Card.Body>
           </Card>
         </Col>
-        <Col sm="12" md="8">
+        <Col sm="12" md="4">
           <Card>
             <Card.Body>
               <h4><Hdd/> Blockchain size: {Number(latestStatistics.sizeOfBlockchainInBytes/Math.pow(1024,2)).toLocaleString()} MB</h4>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col sm="12" md="4">
+          <Card>
+            <Card.Body>
+              <h4><Circle/> Mempool: {latestPendingTransactions.length.toLocaleString()}</h4>
             </Card.Body>
           </Card>
         </Col>
