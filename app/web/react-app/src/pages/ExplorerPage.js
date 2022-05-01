@@ -16,6 +16,7 @@ function ExplorerPage() {
   const [latestBlocks, setLatestBlocks] = useState([]);
   const [latestPendingTransactions, setLatestPendingTransactions] = useState([]);
   const [latestMinedTransactions, setLatestMinedTransactions] = useState([]);
+  const [latestStatistics, setLatestStatistics] = useState({});
 
   const timestamp = () => new Date().toISOString();
 
@@ -26,11 +27,13 @@ function ExplorerPage() {
       console.log(timestamp(), "Entered ExplorerPage getExchangeData");
       const [responseLatestMinedBlocks,
         responsePendingTransactionsFromMempool,
-        responseLatestMinedTransactionFromMempool
+        responseLatestMinedTransactionFromMempool,
+        responseStatistics
       ] = await Promise.all([
         apiHandler.exchangeApiHandler.getLatestMinedBlocksSummary(),
         apiHandler.exchangeApiHandler.getPendingTransactionsFromMempool(),
-        apiHandler.exchangeApiHandler.getLatestMinedTransactionsFromMempool()
+        apiHandler.exchangeApiHandler.getLatestMinedTransactionsFromMempool(),
+        apiHandler.exchangeApiHandler.getStatistics()
       ]);
       console.log({ responseLatestMinedBlocks, responsePendingTransactionsFromMempool, responseLatestMinedTransactionFromMempool });
       if (responseLatestMinedBlocks?.data?.blocks) {
@@ -41,6 +44,9 @@ function ExplorerPage() {
       }
       if (responseLatestMinedTransactionFromMempool?.data?.transactions) {
         setLatestMinedTransactions(responseLatestMinedTransactionFromMempool.data.transactions);
+      }
+      if (responseStatistics?.data?.statistics) {
+        setLatestStatistics(responseStatistics.data.statistics);
       }
     }
 
@@ -59,14 +65,14 @@ function ExplorerPage() {
         <Col sm="12" md="4">
           <Card>
             <Card.Body>
-              <Box/> Blocks Mined: ---
+              <h4><Box/> Blocks Mined: {latestStatistics.totalNumberOfBlocksMined}</h4>
             </Card.Body>
           </Card>
         </Col>
-        <Col sm="12" md="4">
+        <Col sm="12" md="8">
           <Card>
             <Card.Body>
-              <Hdd/> Blockchain size: --- GB
+              <h4><Hdd/> Blockchain size: {Number(latestStatistics.sizeOfBlockchainInBytes/Math.pow(1024,2)).toLocaleString()} MB</h4>
             </Card.Body>
           </Card>
         </Col>
