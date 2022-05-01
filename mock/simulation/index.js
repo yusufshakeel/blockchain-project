@@ -51,6 +51,13 @@ const ACTIONS = [
     getRequestBody: () => {}
   },
   {
+    type: 'DO_NOTHING',
+    url: '',
+    method: '',
+    headers: '',
+    getRequestBody: () => {}
+  },
+  {
     type: 'BUY',
     url: 'http://localhost:10101/blockchain/v1/coins/buy',
     method: 'POST',
@@ -100,7 +107,8 @@ const ACTIONS = [
           RANDOM_TRANSACTION_FEE_COINS[
             Math.floor(Math.random() * RANDOM_TRANSACTION_FEE_COINS.length)
           ].toFixed(NUMBER_OF_DECIMAL_PLACES)
-        )
+        ),
+        message: 'Sending coins'
       };
 
       const validation = {

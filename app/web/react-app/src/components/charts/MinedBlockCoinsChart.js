@@ -6,7 +6,7 @@ function MinedBlockCoinsChart(props) {
   const { categories, coins, colors } = blocks.reduce((result, block) => {
     const { index, coins } = block;
     return {
-      categories: [`Block ${index}`, ...result.categories],
+      categories: [`Block Index ${index}`, ...result.categories],
       coins: [coins, ...result.coins],
       colors: ["#00b412", ...result.colors]
     };

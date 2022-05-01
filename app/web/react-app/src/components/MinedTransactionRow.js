@@ -7,7 +7,8 @@ function MinedTransactionRow(props) {
       sender,
       receiver,
       transactionValue,
-      feeValue
+      feeValue,
+      message
     }
   } = props.transaction;
 
@@ -22,6 +23,7 @@ function MinedTransactionRow(props) {
         <p>Receiver: {receiver}</p>
         <p>Transaction Coins: {transactionValue}</p>
         <p>Fee Coins: {feeValue}</p>
+        <p>Message: {message}</p>
       </td>
     </tr>
   );
