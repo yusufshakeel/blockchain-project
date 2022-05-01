@@ -580,6 +580,81 @@
 					]
 				},
 				{
+					"name": "Get latest mined transactions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/transactions/mempool/mined-transactions",
+							"host": [
+								"{{DOMAIN_URL_EXCHANGE}}"
+							],
+							"path": [
+								"v1",
+								"transactions",
+								"mempool",
+								"mined-transactions"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get latest mined transactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/transactions/mempool/mined-transactions",
+									"host": [
+										"{{DOMAIN_URL_EXCHANGE}}"
+									],
+									"path": [
+										"v1",
+										"transactions",
+										"mempool",
+										"mined-transactions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "4273"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 14:37:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"transactions\": [\n            {\n                \"status\": \"MINED\",\n                \"timestamp\": \"2022-04-30T14:17:55.499Z\",\n                \"minedAt\": \"2022-04-30T14:18:06.586Z\",\n                \"transaction\": {\n                    \"uuid\": \"2fdb6b31-1ea0-4229-96bd-c9a43cd14a44\",\n                    \"sender\": \"1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca\",\n                    \"receiver\": \"ecdb7d2d92c462bf19be9e7462320c35563b230babf0d8cbe8c01cb1b6b40bfc\",\n                    \"transactionValue\": 9.9999,\n                    \"feeValue\": 0.0001,\n                    \"rewardValue\": 0,\n                    \"message\": \"Buying coin from exchange\",\n                    \"transactionType\": \"COIN_TRANSACTION\",\n                    \"timestamp\": \"2022-04-30T14:17:55.497Z\"\n                }\n            },\n            {\n                \"status\": \"MINED\",\n                \"timestamp\": \"2022-04-30T14:10:26.081Z\",\n                \"minedAt\": \"2022-04-30T14:10:33.217Z\",\n                \"transaction\": {\n                    \"uuid\": \"c97d3020-9662-4389-84b0-ff458987f569\",\n                    \"sender\": \"ecdb7d2d92c462bf19be9e7462320c35563b230babf0d8cbe8c01cb1b6b40bfc\",\n                    \"receiver\": \"b465fdcdfaa27a010bb97f522988ac6a2a8f424c5e3be8081adb7c1ba68419d6\",\n                    \"transactionValue\": 1,\n                    \"feeValue\": 0.0001,\n                    \"rewardValue\": 0,\n                    \"transactionType\": \"COIN_TRANSACTION\",\n                    \"timestamp\": \"2022-04-30T14:10:26.077Z\"\n                }\n            },\n            {\n                \"status\": \"MINED\",\n                \"timestamp\": \"2022-04-30T13:31:15.430Z\",\n                \"minedAt\": \"2022-04-30T13:31:30.318Z\",\n                \"transaction\": {\n                    \"uuid\": \"ee51a4d6-3ffe-4d76-b209-45288495a94e\",\n                    \"sender\": \"1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca\",\n                    \"receiver\": \"ecdb7d2d92c462bf19be9e7462320c35563b230babf0d8cbe8c01cb1b6b40bfc\",\n                    \"transactionValue\": 1,\n                    \"feeValue\": 0,\n                    \"rewardValue\": 0,\n                    \"message\": \"Buying coin from exchange\",\n                    \"transactionType\": \"COIN_TRANSACTION\",\n                    \"timestamp\": \"2022-04-30T13:31:15.430Z\"\n                }\n            },\n            {\n                \"status\": \"MINED\",\n                \"timestamp\": \"2022-04-30T13:31:13.747Z\",\n                \"minedAt\": \"2022-04-30T13:31:30.318Z\",\n                \"transaction\": {\n                    \"uuid\": \"2f5e8f71-c49b-4628-b58e-81f278dae68d\",\n                    \"sender\": \"1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca\",\n                    \"receiver\": \"ecdb7d2d92c462bf19be9e7462320c35563b230babf0d8cbe8c01cb1b6b40bfc\",\n                    \"transactionValue\": 1,\n                    \"feeValue\": 0,\n                    \"rewardValue\": 0,\n                    \"message\": \"Buying coin from exchange\",\n                    \"transactionType\": \"COIN_TRANSACTION\",\n                    \"timestamp\": \"2022-04-30T13:31:13.747Z\"\n                }\n            },\n            {\n                \"status\": \"MINED\",\n                \"timestamp\": \"2022-04-30T13:31:11.642Z\",\n                \"minedAt\": \"2022-04-30T13:31:30.318Z\",\n                \"transaction\": {\n                    \"uuid\": \"a1201b71-105a-4e31-8509-5b624fd54330\",\n                    \"sender\": \"1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca\",\n                    \"receiver\": \"ecdb7d2d92c462bf19be9e7462320c35563b230babf0d8cbe8c01cb1b6b40bfc\",\n                    \"transactionValue\": 1,\n                    \"feeValue\": 0,\n                    \"rewardValue\": 0,\n                    \"message\": \"Buying coin from exchange\",\n                    \"transactionType\": \"COIN_TRANSACTION\",\n                    \"timestamp\": \"2022-04-30T13:31:11.641Z\"\n                }\n            },\n            {\n                \"status\": \"MINED\",\n                \"timestamp\": \"2022-04-30T13:30:50.398Z\",\n                \"minedAt\": \"2022-04-30T13:31:02.667Z\",\n                \"transaction\": {\n                    \"uuid\": \"aa2e7aa4-8214-4ef9-99bc-6b4b91c78671\",\n                    \"sender\": \"1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca\",\n                    \"receiver\": \"ecdb7d2d92c462bf19be9e7462320c35563b230babf0d8cbe8c01cb1b6b40bfc\",\n                    \"transactionValue\": 1,\n                    \"feeValue\": 0,\n                    \"rewardValue\": 0,\n                    \"message\": \"Buying coin from exchange\",\n                    \"transactionType\": \"COIN_TRANSACTION\",\n                    \"timestamp\": \"2022-04-30T13:30:50.395Z\"\n                }\n            },\n            {\n                \"status\": \"MINED\",\n                \"timestamp\": \"2022-04-30T09:59:16.041Z\",\n                \"minedAt\": \"2022-04-30T09:59:30.126Z\",\n                \"transaction\": {\n                    \"uuid\": \"81fb1448-e40a-4eed-96cc-3c496c418f40\",\n                    \"sender\": \"1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca\",\n                    \"receiver\": \"20d772b858f4512ea9902b52ffe13fa90f48a9dc26611faebcb31c1640b8ec05\",\n                    \"transactionValue\": 1,\n                    \"feeValue\": 0,\n                    \"rewardValue\": 0,\n                    \"message\": \"Buying coin from exchange\",\n                    \"transactionType\": \"COIN_TRANSACTION\",\n                    \"timestamp\": \"2022-04-30T09:59:16.040Z\"\n                }\n            },\n            {\n                \"status\": \"MINED\",\n                \"timestamp\": \"2022-04-30T09:56:50.167Z\",\n                \"minedAt\": \"2022-04-30T09:57:01.498Z\",\n                \"transaction\": {\n                    \"uuid\": \"498244d7-07e5-449d-aa8c-20492ef6ccec\",\n                    \"sender\": \"1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca\",\n                    \"receiver\": \"20d772b858f4512ea9902b52ffe13fa90f48a9dc26611faebcb31c1640b8ec05\",\n                    \"transactionValue\": 1,\n                    \"feeValue\": 0,\n                    \"rewardValue\": 0,\n                    \"message\": \"Buying coin from exchange\",\n                    \"transactionType\": \"COIN_TRANSACTION\",\n                    \"timestamp\": \"2022-04-30T09:56:50.163Z\"\n                }\n            },\n            {\n                \"status\": \"MINED\",\n                \"timestamp\": \"2022-04-29T17:41:39.335Z\",\n                \"minedAt\": \"2022-04-29T17:42:00.730Z\",\n                \"transaction\": {\n                    \"uuid\": \"752d91a7-beb4-48c0-a7f1-45cd7689761c\",\n                    \"sender\": \"1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca\",\n                    \"receiver\": \"1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca\",\n                    \"transactionValue\": 0,\n                    \"feeValue\": 0,\n                    \"rewardValue\": 0,\n                    \"message\": \"GENESIS TRANSACTION\",\n                    \"transactionType\": \"COIN_TRANSACTION\",\n                    \"timestamp\": \"2022-04-29T17:41:39.330Z\"\n                }\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
 					"name": "Get Block by Id",
 					"request": {
 						"method": "GET",
