@@ -834,16 +834,24 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
 									"key": "content-type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "content-length",
-									"value": "54"
+									"value": "89"
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 28 Apr 2022 17:06:53 GMT"
+									"value": "Sun, 01 May 2022 19:21:14 GMT"
 								},
 								{
 									"key": "Connection",
@@ -855,7 +863,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"data\": {\n        \"statistics\": {\n            \"totalNumberOfBlocksMined\": 5\n        }\n    }\n}"
+							"body": "{\n    \"data\": {\n        \"statistics\": {\n            \"totalNumberOfBlocksMined\": 110,\n            \"sizeOfBlockchainInBytes\": 857533\n        }\n    }\n}"
 						}
 					]
 				},
