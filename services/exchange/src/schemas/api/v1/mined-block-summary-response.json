@@ -1,0 +1,34 @@
+{
+  "$id": "minedBlocksSummaryResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "blocks"
+      ],
+      "properties": {
+        "blocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "coins": {
+                "$ref": "../../domain/v1/coin.json#"
+              },
+              "timestamp": {
+                "$ref": "../../domain/v1/timestamp.json#"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

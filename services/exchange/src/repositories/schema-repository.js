@@ -52,6 +52,10 @@ module.exports = function SchemaRepository({ parser }) {
       path.join(SCHEMA_LOCATION_V1, 'buy-coin-fee-response.json')
     );
 
+    const minedBlocksSummaryResponse = await parser.dereference(
+      path.join(SCHEMA_LOCATION_V1, 'mined-block-summary-response.json')
+    );
+
     const v1Schemas = {
       blockchain: {
         block: {
@@ -61,6 +65,11 @@ module.exports = function SchemaRepository({ parser }) {
           response: blockResponse,
           statistics: {
             response: statisticsResponse
+          },
+          mined: {
+            summary: {
+              response: minedBlocksSummaryResponse
+            }
           }
         },
         emptyObject: emptyObject,
