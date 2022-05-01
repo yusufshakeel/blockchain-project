@@ -13,6 +13,36 @@ function ExchangeApiHandler({ axiosInstance }) {
       }
     })
   };
+
+  this.getLatestMinedBlocksSummary = async function() {
+    return await httpAction.get({
+      url: '/blockchain/v1/blocks/mined-summary',
+      headers: {
+        'x-trace-id': uuidV4(),
+        'x-app-id': 'react-app'
+      }
+    })
+  };
+
+  this.getPendingTransactionsFromMempool = async function() {
+    return await httpAction.get({
+      url: '/blockchain/v1/transactions/mempool',
+      headers: {
+        'x-trace-id': uuidV4(),
+        'x-app-id': 'react-app'
+      }
+    })
+  };
+
+  this.getLatestMinedTransactionsFromMempool = async function() {
+    return await httpAction.get({
+      url: '/blockchain/v1/transactions/mempool/mined-transactions',
+      headers: {
+        'x-trace-id': uuidV4(),
+        'x-app-id': 'react-app'
+      }
+    })
+  };
 }
 
 export default ExchangeApiHandler;
