@@ -46,7 +46,8 @@ module.exports = function BlockchainController({ repositories }) {
       const summary = {
         index,
         timestamp,
-        coins
+        coins,
+        numberOfTransactions: transactions.length
       };
 
       return [...result, summary];

@@ -80,32 +80,36 @@ describe('Testing BlockchainController', () => {
           data: {
             blocks: [
               {
+                coins: 128,
                 index: 0,
+                numberOfTransactions: 2,
                 timestamp: {
                   $date: '2022-04-27T16:15:30.222Z'
-                },
-                coins: 128
+                }
               },
               {
+                coins: 129,
                 index: 1,
+                numberOfTransactions: 2,
                 timestamp: {
                   $date: '2022-04-28T04:22:01.159Z'
-                },
-                coins: 129
+                }
               },
               {
+                coins: 132,
                 index: 2,
+                numberOfTransactions: 3,
                 timestamp: {
                   $date: '2022-04-28T04:22:31.298Z'
-                },
-                coins: 132
+                }
               },
               {
+                coins: 129.0001,
                 index: 3,
+                numberOfTransactions: 3,
                 timestamp: {
                   $date: '2022-04-28T04:24:33.295Z'
-                },
-                coins: 129.0001
+                }
               }
             ]
           }
