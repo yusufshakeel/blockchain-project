@@ -8,8 +8,9 @@ describe('Testing MempoolRepository', () => {
   });
 
   test('Should be able to fetch all pending transactions', async () => {
+    const sort = jest.fn();
     const MempoolModel = {
-      find: jest.fn()
+      find: jest.fn(() => ({ sort }))
     };
     const mempoolRepository = new MempoolRepository({ MempoolModel });
     await mempoolRepository.fetchAllPendingTransactions();

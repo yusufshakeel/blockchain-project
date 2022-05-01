@@ -5,6 +5,7 @@ const JsonSchemaRefParser = require('json-schema-ref-parser');
 const areciboPlugin = require('arecibo');
 const swaggerConfig = require('./configs/swagger-config');
 const areciboConfig = require('./configs/arecibo-config');
+const corsConfig = require('./configs/cors-config');
 const { HTTP_PORT, HTTP_HOST } = require('./constants');
 const ErrorHandlerMiddleware = require('./middlewares/error-handler-middleware');
 const RoutesV1 = require('./routes/v1');
@@ -19,6 +20,7 @@ module.exports = function Server({ fastify, services }) {
     const schemaRepository = await repositories.schemaRepository.loadAll();
     const controllers = new Controllers({ services, repositories });
 
+    fastify.register(require('fastify-cors'), corsConfig);
     fastify.setErrorHandler(new ErrorHandlerMiddleware());
     fastify.register(swaggerPlugin, swaggerConfig);
     fastify.register(areciboPlugin, areciboConfig);
