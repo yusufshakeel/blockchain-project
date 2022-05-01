@@ -10,6 +10,25 @@ This project creates a simple cryptocurrency called CoinCoin (CC) and also gives
 * Desktop app for macOS using Electron
 * Website using React
 
+**This is just an experimental project.**
+
+Hope you will find it interesting :)
+
+Find me on [yusufshakeel.com](https://yusufshakeel.com)
+
+
+#### Website
+
+![react app](./resources/web-app-react.png)
+
+#### Explorer
+
+![explorer](./resources/explorer.png)
+
+#### Desktop app
+
+![electron app](./resources/desktop-app.png)
+
 ## Table of Content
 
 * [Getting started](#getting-started)
@@ -156,3 +175,13 @@ npm run start
 ```text
 http://localhost:10104/documentation/static/index.html
 ```
+
+## License
+
+It's free :smiley:
+
+[MIT License](https://github.com/yusufshakeel/blockchain-project/blob/main/LICENSE) Copyright (c) 2022 Yusuf Shakeel
+
+### Donate
+
+Feeling generous :smiley: [Donate via PayPal](https://www.paypal.me/yusufshakeel)
