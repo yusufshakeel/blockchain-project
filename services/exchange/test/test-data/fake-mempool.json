@@ -1,0 +1,115 @@
+[
+  {
+    "_id": {
+      "$oid": "626c2353008b683892acabf4"
+    },
+    "uuid": "752d91a7-beb4-48c0-a7f1-45cd7689761c",
+    "transaction": {
+      "uuid": "752d91a7-beb4-48c0-a7f1-45cd7689761c",
+      "sender": "1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca",
+      "receiver": "1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca",
+      "transactionValue": 0,
+      "feeValue": 0,
+      "rewardValue": 0,
+      "message": "GENESIS TRANSACTION",
+      "transactionType": "COIN_TRANSACTION",
+      "timestamp": {
+        "$date": {
+          "$numberLong": "1651254099330"
+        }
+      },
+      "_id": {
+        "$oid": "626c2353008b683892acabf5"
+      }
+    },
+    "status": "MINED",
+    "timestamp": {
+      "$date": {
+        "$numberLong": "1651254099335"
+      }
+    },
+    "__v": 0,
+    "minedAt": {
+      "$date": {
+        "$numberLong": "1651254120730"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1651254120730"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "626d07e25669ae39d5d19750"
+    },
+    "uuid": "498244d7-07e5-449d-aa8c-20492ef6ccec",
+    "transaction": {
+      "uuid": "498244d7-07e5-449d-aa8c-20492ef6ccec",
+      "sender": "1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca",
+      "receiver": "20d772b858f4512ea9902b52ffe13fa90f48a9dc26611faebcb31c1640b8ec05",
+      "transactionValue": 1,
+      "feeValue": 0,
+      "rewardValue": 0,
+      "message": "Buying coin from exchange",
+      "transactionType": "COIN_TRANSACTION",
+      "timestamp": {
+        "$date": {
+          "$numberLong": "1651312610163"
+        }
+      },
+      "_id": {
+        "$oid": "626d07e25669ae39d5d19751"
+      }
+    },
+    "status": "MINED",
+    "timestamp": {
+      "$date": {
+        "$numberLong": "1651312610167"
+      }
+    },
+    "__v": 0,
+    "minedAt": {
+      "$date": {
+        "$numberLong": "1651312621498"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1651312621498"
+      }
+    }
+  },
+  {
+    "_id": {
+      "$oid": "626d08745669ae39d5d19754"
+    },
+    "uuid": "81fb1448-e40a-4eed-96cc-3c496c418f40",
+    "transaction": {
+      "uuid": "81fb1448-e40a-4eed-96cc-3c496c418f40",
+      "sender": "1ed3c3663cd6fb1bd8d12ae7cd1df7436ed250ae5241ed92a4b546fc868a2dca",
+      "receiver": "20d772b858f4512ea9902b52ffe13fa90f48a9dc26611faebcb31c1640b8ec05",
+      "transactionValue": 1,
+      "feeValue": 0,
+      "rewardValue": 0,
+      "message": "Buying coin from exchange",
+      "transactionType": "COIN_TRANSACTION",
+      "timestamp": {
+        "$date": {
+          "$numberLong": "1651312756040"
+        }
+      },
+      "_id": {
+        "$oid": "626d08745669ae39d5d19755"
+      }
+    },
+    "status": "PENDING",
+    "timestamp": {
+      "$date": {
+        "$numberLong": "1651312756041"
+      }
+    },
+    "__v": 0
+  }
+]

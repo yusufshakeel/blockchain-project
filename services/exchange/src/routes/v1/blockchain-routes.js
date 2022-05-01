@@ -40,4 +40,20 @@ module.exports = function BlockchainRoutes(fastify, options) {
       reply.code(HTTP_STATUS_CODES.OK).send(result);
     }
   });
+
+  fastify.route({
+    method: 'GET',
+    url: '/blockchain/v1/blocks/mined-summary',
+    schema: {
+      tags: ['Blockchain'],
+      description: 'This will return latest mined blocks.',
+      response: {
+        200: schemaRepository.v1.blockchain.block.mined.summary.response
+      }
+    },
+    handler: async function (request, reply) {
+      const result = await controllers.blockchainController.fetchLatestMinedBlocksSummary();
+      reply.code(HTTP_STATUS_CODES.OK).send(result);
+    }
+  });
 };

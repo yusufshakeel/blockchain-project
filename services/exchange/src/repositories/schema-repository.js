@@ -52,6 +52,14 @@ module.exports = function SchemaRepository({ parser }) {
       path.join(SCHEMA_LOCATION_V1, 'buy-coin-fee-response.json')
     );
 
+    const minedBlocksSummaryResponse = await parser.dereference(
+      path.join(SCHEMA_LOCATION_V1, 'mined-block-summary-response.json')
+    );
+
+    const minedTransactionsFromMempoolSummaryResponse = await parser.dereference(
+      path.join(SCHEMA_LOCATION_V1, 'mined-transaction-from-mempool-summary-response.json')
+    );
+
     const v1Schemas = {
       blockchain: {
         block: {
@@ -61,12 +69,22 @@ module.exports = function SchemaRepository({ parser }) {
           response: blockResponse,
           statistics: {
             response: statisticsResponse
+          },
+          mined: {
+            summary: {
+              response: minedBlocksSummaryResponse
+            }
           }
         },
         emptyObject: emptyObject,
         requestHeader: requestHeader,
         mempoolTransactions: {
-          response: mempoolTransactionsResponse
+          response: mempoolTransactionsResponse,
+          mined: {
+            summary: {
+              response: minedTransactionsFromMempoolSummaryResponse
+            }
+          }
         },
         addressCoinBalance: {
           request: {

@@ -11,7 +11,7 @@ function ErrorHandlerMiddleware() {
     console.error(`FASTIFY_ERROR_HANDLER for ${method} ${url}`, error, {
       url,
       query: request.query,
-      body: request.body,
+      body: JSON.stringify(request.body),
       method
     });
     const enrichedError = errorBuilder.build(error);

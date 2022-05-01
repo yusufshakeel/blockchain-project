@@ -1,0 +1,40 @@
+{
+  "name": "blockchain-project",
+  "version": "0.1.0",
+  "description": "This is a simple blockchain project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusufshakeel/blockchain-project.git"
+  },
+  "keywords": [
+    "blockchain",
+    "javascript",
+    "node",
+    "nodejs"
+  ],
+  "author": "Yusuf Shakeel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yusufshakeel/blockchain-project/issues"
+  },
+  "homepage": "https://github.com/yusufshakeel/blockchain-project#readme",
+  "engines": {
+    "node": ">14.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.0"
+  },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cron": "^1.8.3",
+    "uuid": "^8.3.2"
+  }
+}

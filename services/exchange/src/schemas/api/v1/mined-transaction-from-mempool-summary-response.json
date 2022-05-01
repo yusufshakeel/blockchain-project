@@ -1,0 +1,46 @@
+{
+  "$id": "minedTransactionFromMempoolSummaryResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "transactions": [
+        "data"
+      ],
+      "properties": {
+        "transactions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "status",
+              "timestamp",
+              "minedAt",
+              "transaction"
+            ],
+            "properties": {
+              "status": {
+                "type": "string",
+                "description": "This is the status of the transaction in the mempool."
+              },
+              "timestamp": {
+                "$ref": "../../domain/v1/timestamp.json#",
+                "description": "This is the timestamp when the transaction was added to the mempool."
+              },
+              "minedAt": {
+                "$ref": "../../domain/v1/timestamp.json#",
+                "description": "This is the timestamp when the transaction was mined."
+              },
+              "transaction": {
+                "$ref": "../../domain/v1/transaction.json#"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

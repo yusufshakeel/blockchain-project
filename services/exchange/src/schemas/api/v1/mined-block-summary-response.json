@@ -1,0 +1,43 @@
+{
+  "$id": "minedBlocksSummaryResponse",
+  "type": "object",
+  "required": [
+    "data"
+  ],
+  "properties": {
+    "data": {
+      "type": "object",
+      "required": [
+        "blocks"
+      ],
+      "properties": {
+        "blocks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "index",
+              "coins",
+              "numberOfTransactions",
+              "timestamp"
+            ],
+            "properties": {
+              "index": {
+                "type": "integer"
+              },
+              "coins": {
+                "$ref": "../../domain/v1/coin.json#"
+              },
+              "numberOfTransactions": {
+                "type": "integer"
+              },
+              "timestamp": {
+                "$ref": "../../domain/v1/timestamp.json#"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

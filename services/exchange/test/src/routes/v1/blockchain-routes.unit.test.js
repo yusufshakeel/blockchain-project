@@ -32,7 +32,8 @@ describe('Testing blockchain routes', () => {
             }
           }
         })),
-        fetchStatistics: jest.fn(() => ({ data: { statistics: { totalNumberOfBlocksMined: 1 } } }))
+        fetchStatistics: jest.fn(() => ({ data: { statistics: { totalNumberOfBlocksMined: 1 } } })),
+        fetchLatestMinedBlocksSummary: jest.fn(() => ({ data: { blocks: [] } }))
       }
     };
     const schemaRepository = await new SchemaRepository({
@@ -59,6 +60,19 @@ describe('Testing blockchain routes', () => {
       const response = await fastify.inject({
         method: 'GET',
         url: '/blockchain/v1/blocks/statistics',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      expect(response.statusCode).toBe(200);
+    });
+  });
+
+  describe('Testing get mined summary', () => {
+    test('Should return result', async () => {
+      const response = await fastify.inject({
+        method: 'GET',
+        url: '/blockchain/v1/blocks/mined-summary',
         headers: {
           'Content-Type': 'application/json'
         }
