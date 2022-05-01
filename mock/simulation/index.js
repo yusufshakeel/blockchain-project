@@ -44,6 +44,20 @@ const getSignature = (transaction, privateKey) => {
 
 const ACTIONS = [
   {
+    type: 'DO_NOTHING',
+    url: '',
+    method: '',
+    headers: '',
+    getRequestBody: () => {}
+  },
+  {
+    type: 'DO_NOTHING',
+    url: '',
+    method: '',
+    headers: '',
+    getRequestBody: () => {}
+  },
+  {
     type: 'BUY',
     url: 'http://localhost:10101/blockchain/v1/coins/buy',
     method: 'POST',
@@ -93,7 +107,8 @@ const ACTIONS = [
           RANDOM_TRANSACTION_FEE_COINS[
             Math.floor(Math.random() * RANDOM_TRANSACTION_FEE_COINS.length)
           ].toFixed(NUMBER_OF_DECIMAL_PLACES)
-        )
+        ),
+        message: 'Sending coins'
       };
 
       const validation = {
@@ -120,9 +135,13 @@ async function start() {
   console.log('ENTERED MOCK SIMULATION - start()');
 
   const action = getAction();
-  const { url, headers, getRequestBody } = action;
-  const response = await restClient.post({ url, requestBody: getRequestBody(), headers });
-  console.log(response);
+  if (action.type !== 'DO_NOTHING') {
+    const { url, headers, getRequestBody } = action;
+    const response = await restClient.post({ url, requestBody: getRequestBody(), headers });
+    console.log(response);
+  } else {
+    console.log('NOTHING TO DO...');
+  }
 
   console.log('EXITING MOCK SIMULATION - start()');
 }

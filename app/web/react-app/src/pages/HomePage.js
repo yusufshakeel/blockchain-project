@@ -40,8 +40,8 @@ function HomePage() {
       </Row>
       <Row>
         <Col className="my-5 text-center">
-          <h1 className="display-1">Blocks mined <Box /></h1>
-          <h2 className="display-3">{blockchainStatistics?.totalNumberOfBlocksMined ? blockchainStatistics.totalNumberOfBlocksMined : '---'}</h2>
+          <h1 className="display-1">Blocks mined</h1>
+          <h2 className="display-3"><Box /> {blockchainStatistics?.totalNumberOfBlocksMined ? blockchainStatistics.totalNumberOfBlocksMined : '---'}</h2>
         </Col>
       </Row>
     </Container>

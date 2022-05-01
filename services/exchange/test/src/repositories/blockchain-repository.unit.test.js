@@ -19,12 +19,12 @@ describe('Testing BlockchainRepository', () => {
 
   test('Should be able to fetch statistics', async () => {
     const BlockchainModel = {
-      countDocuments: jest.fn()
+      collection: { stats: jest.fn(() => ({ count: 1, size: 1 })) }
     };
     const blockchainRepository = new BlockchainRepository({ BlockchainModel });
     await blockchainRepository.fetchStatistics();
-    expect(BlockchainModel.countDocuments).toHaveBeenCalledTimes(1);
-    expect(BlockchainModel.countDocuments).toHaveBeenCalledWith();
+    expect(BlockchainModel.collection.stats).toHaveBeenCalledTimes(1);
+    expect(BlockchainModel.collection.stats).toHaveBeenCalledWith();
   });
 
   test('Should be able to fetch all blocks', async () => {

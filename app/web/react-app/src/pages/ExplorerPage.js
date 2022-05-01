@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Table } from "react-bootstrap";
+import { Container, Row, Col, Table, Card } from "react-bootstrap";
+import { Box, Hdd } from "react-bootstrap-icons";
 
+import MinedBlockCoinsChart from "../components/charts/MinedBlockCoinsChart";
+import MinedBlockTransactionsChart from "../components/charts/MinedBlockTransactionsChart";
 import MinedBlockRow from "../components/MinedBlockRow";
 import MempoolTransactionRow from "../components/MempoolTransactionRow";
-import MinedTransactionRow from "../components/MinedTransactionRow";
 
+import MinedTransactionRow from "../components/MinedTransactionRow";
 import ApiHandlers from "../api-handlers";
 
 const apiHandler = new ApiHandlers();
@@ -13,6 +16,7 @@ function ExplorerPage() {
   const [latestBlocks, setLatestBlocks] = useState([]);
   const [latestPendingTransactions, setLatestPendingTransactions] = useState([]);
   const [latestMinedTransactions, setLatestMinedTransactions] = useState([]);
+  const [latestStatistics, setLatestStatistics] = useState({});
 
   const timestamp = () => new Date().toISOString();
 
@@ -23,11 +27,13 @@ function ExplorerPage() {
       console.log(timestamp(), "Entered ExplorerPage getExchangeData");
       const [responseLatestMinedBlocks,
         responsePendingTransactionsFromMempool,
-        responseLatestMinedTransactionFromMempool
+        responseLatestMinedTransactionFromMempool,
+        responseStatistics
       ] = await Promise.all([
         apiHandler.exchangeApiHandler.getLatestMinedBlocksSummary(),
         apiHandler.exchangeApiHandler.getPendingTransactionsFromMempool(),
-        apiHandler.exchangeApiHandler.getLatestMinedTransactionsFromMempool()
+        apiHandler.exchangeApiHandler.getLatestMinedTransactionsFromMempool(),
+        apiHandler.exchangeApiHandler.getStatistics()
       ]);
       console.log({ responseLatestMinedBlocks, responsePendingTransactionsFromMempool, responseLatestMinedTransactionFromMempool });
       if (responseLatestMinedBlocks?.data?.blocks) {
@@ -39,6 +45,9 @@ function ExplorerPage() {
       if (responseLatestMinedTransactionFromMempool?.data?.transactions) {
         setLatestMinedTransactions(responseLatestMinedTransactionFromMempool.data.transactions);
       }
+      if (responseStatistics?.data?.statistics) {
+        setLatestStatistics(responseStatistics.data.statistics);
+      }
     }
 
     const interval = setInterval(getExchangeData, 5000);
@@ -49,7 +58,31 @@ function ExplorerPage() {
     <Container>
       <Row>
         <Col>
-          <h1 className="text-center my-5">Explorer</h1>
+          <h1 className="text-center mt-2 my-5">Explorer</h1>
+        </Col>
+      </Row>
+      <Row className="my-3">
+        <Col sm="12" md="4">
+          <Card>
+            <Card.Body>
+              <h4><Box/> Blocks Mined: {latestStatistics.totalNumberOfBlocksMined}</h4>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col sm="12" md="8">
+          <Card>
+            <Card.Body>
+              <h4><Hdd/> Blockchain size: {Number(latestStatistics.sizeOfBlockchainInBytes/Math.pow(1024,2)).toLocaleString()} MB</h4>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <MinedBlockCoinsChart blocks={latestBlocks}/>
+        </Col>
+        <Col>
+          <MinedBlockTransactionsChart blocks={latestBlocks}/>
         </Col>
       </Row>
       <Row>
