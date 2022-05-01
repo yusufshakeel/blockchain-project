@@ -507,6 +507,79 @@
 					]
 				},
 				{
+					"name": "Get latest mined blocks summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/blocks/mined-summary",
+							"host": [
+								"{{DOMAIN_URL_EXCHANGE}}"
+							],
+							"path": [
+								"v1",
+								"blocks",
+								"mined-summary"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get latest mined blocks summary",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{DOMAIN_URL_EXCHANGE}}/v1/blocks/mined-summary",
+									"host": [
+										"{{DOMAIN_URL_EXCHANGE}}"
+									],
+									"path": [
+										"v1",
+										"blocks",
+										"mined-summary"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "vary",
+									"value": "Origin"
+								},
+								{
+									"key": "access-control-allow-origin",
+									"value": "*"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "content-length",
+									"value": "642"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 01 May 2022 14:17:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"blocks\": [\n            {\n                \"index\": 6,\n                \"coins\": 138,\n                \"numberOfTransactions\": 3,\n                \"timestamp\": \"2022-04-30T14:18:06.571Z\"\n            },\n            {\n                \"index\": 5,\n                \"coins\": 129.0001,\n                \"numberOfTransactions\": 3,\n                \"timestamp\": \"2022-04-30T14:10:33.192Z\"\n            },\n            {\n                \"index\": 4,\n                \"coins\": 131,\n                \"numberOfTransactions\": 4,\n                \"timestamp\": \"2022-04-30T13:31:30.312Z\"\n            },\n            {\n                \"index\": 3,\n                \"coins\": 129,\n                \"numberOfTransactions\": 2,\n                \"timestamp\": \"2022-04-30T13:31:02.641Z\"\n            },\n            {\n                \"index\": 2,\n                \"coins\": 129,\n                \"numberOfTransactions\": 2,\n                \"timestamp\": \"2022-04-30T09:59:30.121Z\"\n            },\n            {\n                \"index\": 1,\n                \"coins\": 129,\n                \"numberOfTransactions\": 2,\n                \"timestamp\": \"2022-04-30T09:57:01.472Z\"\n            },\n            {\n                \"index\": 0,\n                \"coins\": 128,\n                \"numberOfTransactions\": 2,\n                \"timestamp\": \"2022-04-29T17:42:00.721Z\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
 					"name": "Get Block by Id",
 					"request": {
 						"method": "GET",
