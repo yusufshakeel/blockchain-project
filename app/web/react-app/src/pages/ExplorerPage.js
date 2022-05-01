@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Table } from "react-bootstrap";
 
+import MinedBlockCoinsChart from "../components/charts/MinedBlockCoinsChart";
+import MinedBlockTransactionsChart from "../components/charts/MinedBlockTransactionsChart";
 import MinedBlockRow from "../components/MinedBlockRow";
 import MempoolTransactionRow from "../components/MempoolTransactionRow";
 import MinedTransactionRow from "../components/MinedTransactionRow";
@@ -49,7 +51,17 @@ function ExplorerPage() {
     <Container>
       <Row>
         <Col>
-          <h1 className="text-center my-5">Explorer</h1>
+          <h1 className="text-center mt-2 my-5">Explorer</h1>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <h4>Coins/Block</h4>
+          <MinedBlockCoinsChart blocks={latestBlocks}/>
+        </Col>
+        <Col>
+          <h4>Transactions/Block</h4>
+          <MinedBlockTransactionsChart blocks={latestBlocks}/>
         </Col>
       </Row>
       <Row>
